@@ -157,7 +157,8 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 				this.allCompanys = this.allCompanys.filter(row => row.id == this.CompanyID)
 				this.filteredCompanys = this.allCompanys.filter(row => row.id == this.CompanyID);
 			}
-			this.getLocation(this.filteredCompanys[0].id);			
+			this.getLocation(this.filteredCompanys[0].id);
+			
 		});
 
 		

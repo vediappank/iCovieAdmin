@@ -117,10 +117,9 @@ export class regioneditcomponent implements OnInit {
 				this.allCountrys= _Country;
 				this.filteredCountrys =this.allCountrys;			
 		
-			if (this.issuperadmin == "False") {
-				
-				this.filteredCountrys = this.allCountrys.filter(row => row.id == this.CountryID);
-			}
+			// if (this.issuperadmin == "False") {				
+			// 	this.filteredCountrys = this.allCountrys.filter(row => row.id == this.CountryID);
+			// }
 
 			
 		});
