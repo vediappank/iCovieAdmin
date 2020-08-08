@@ -13,7 +13,6 @@ using System.Text;
 using System.Web.Http;
 using iCovieApi.HelperClass;
 using System.Web;
-
 using iCovieApi.Models;
 using System.Drawing;
 using System.Drawing.Drawing2D;
