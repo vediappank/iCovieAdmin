@@ -1,0 +1,175 @@
+2020-08-05 15:08:36,629 [7] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Retrieving Data GetUser Collections
+2020-08-05 15:08:36,887 [7] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - GetUser Result:SUCCESS
+2020-08-05 15:08:36,887 [7] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Procedure executed successfully, GetUser Records returned-1
+2020-08-05 15:08:37,671 [8] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - Retrieving GetMenuConfigCollection 
+2020-08-05 15:08:37,810 [8] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - GetMenuConfigCollection Result:SUCCESS
+2020-08-05 15:08:37,823 [8] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - Procedure executed successfully, GetMenuConfigCollection Records returned-19
+2020-08-05 15:55:17,001 [25] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Retrieving Data GetUser Collections
+2020-08-05 15:55:17,009 [25] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - GetUser Result:SUCCESS
+2020-08-05 15:55:17,010 [25] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Procedure executed successfully, GetUser Records returned-1
+2020-08-05 15:55:17,117 [24] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - Retrieving GetMenuConfigCollection 
+2020-08-05 15:55:17,120 [24] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - GetMenuConfigCollection Result:SUCCESS
+2020-08-05 15:55:17,121 [24] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - Procedure executed successfully, GetMenuConfigCollection Records returned-19
+2020-08-05 17:30:45,473 [63] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Retrieving Data GetUser Collections
+2020-08-05 17:30:45,483 [63] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - GetUser Result:SUCCESS
+2020-08-05 17:30:45,483 [63] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Procedure executed successfully, GetUser Records returned-1
+2020-08-05 17:30:45,487 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Retrieving Data GetUser Collections
+2020-08-05 17:30:45,489 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - GetUser Result:SUCCESS
+2020-08-05 17:30:45,489 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Procedure executed successfully, GetUser Records returned-1
+2020-08-05 17:33:01,858 [61] DEBUG iCovieApi.MyAuthProvider - [ValidateLoginDetails] - ValidateLogin Result:SUCCESS
+2020-08-05 17:33:01,953 [61] DEBUG iCovieApi.MyAuthProvider - [ValidateLoginDetails] - Procedure executed successfully, ValidateLogin Records returned-0
+2020-08-05 17:33:07,099 [67] DEBUG iCovieApi.MyAuthProvider - [ValidateLoginDetails] - ValidateLogin Result:SUCCESS
+2020-08-05 17:33:07,100 [67] DEBUG iCovieApi.MyAuthProvider - [ValidateLoginDetails] - Procedure executed successfully, ValidateLogin Records returned-1
+2020-08-05 17:33:07,130 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - Retrieving GetAllCompany 
+2020-08-05 17:33:07,130 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Retrieving Data GetUser Collections
+2020-08-05 17:33:07,132 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - Retrieving GetAllLocation 
+2020-08-05 17:33:07,133 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - Retrieving GetMenuConfigCollection 
+2020-08-05 17:33:07,135 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - GetAllCompany Result:SUCCESS
+2020-08-05 17:33:07,136 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - Procedure executed successfully, GetAllCompany Records returned-2
+2020-08-05 17:33:07,137 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - GetUser Result:SUCCESS
+2020-08-05 17:33:07,138 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Procedure executed successfully, GetUser Records returned-1
+2020-08-05 17:33:07,146 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - GetAllLocation Result:SUCCESS
+2020-08-05 17:33:07,147 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - Procedure executed successfully, GetAllLocation Records returned-5
+2020-08-05 17:33:07,147 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Retrieving Data GetUser Collections
+2020-08-05 17:33:07,149 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - GetUser Result:SUCCESS
+2020-08-05 17:33:07,149 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetUserByUserID] - Procedure executed successfully, GetUser Records returned-1
+2020-08-05 17:33:07,233 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,233 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,234 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,234 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,234 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,235 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,235 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,235 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,235 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,236 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,236 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,236 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,236 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,237 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,238 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,238 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,238 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,238 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - List Menu Item Result:iCovieApi.Models.MenuItems
+2020-08-05 17:33:07,239 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - GetMenuConfigCollection Result:SUCCESS
+2020-08-05 17:33:07,239 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetMainMenuCollection] - Procedure executed successfully, GetMenuConfigCollection Records returned-24
+2020-08-05 17:33:07,657 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - Retrieving GetMenuConfigCollection 
+2020-08-05 17:33:07,659 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - GetMenuConfigCollection Result:SUCCESS
+2020-08-05 17:33:07,660 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetMenuConfigCollection] - Procedure executed successfully, GetMenuConfigCollection Records returned-19
+2020-08-05 17:33:33,026 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllProperty] - Retrieving GetAllProperty 
+2020-08-05 17:33:33,048 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,051 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,051 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-3
+2020-08-05 17:33:33,052 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,074 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,074 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-1
+2020-08-05 17:33:33,075 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,075 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,076 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-2
+2020-08-05 17:33:33,076 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,076 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,077 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-0
+2020-08-05 17:33:33,077 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,078 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,079 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-3
+2020-08-05 17:33:33,079 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,080 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,080 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-0
+2020-08-05 17:33:33,081 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,081 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,082 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-2
+2020-08-05 17:33:33,082 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,082 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,083 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-0
+2020-08-05 17:33:33,083 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,083 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,084 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-2
+2020-08-05 17:33:33,084 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,084 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,085 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-0
+2020-08-05 17:33:33,085 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,085 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,086 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-2
+2020-08-05 17:33:33,086 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,086 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,086 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-3
+2020-08-05 17:33:33,087 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Retrieving GetAllPropertyAminities 
+2020-08-05 17:33:33,087 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - GetAllPropertyAminities Result:SUCCESS
+2020-08-05 17:33:33,087 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyAminities] - Procedure executed successfully, GetAllPropertyAminities Records returned-3
+2020-08-05 17:33:33,088 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Retrieving GetAllPropertyImages 
+2020-08-05 17:33:33,088 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - GetAllPropertyImages Result:SUCCESS
+2020-08-05 17:33:33,089 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllPropertyImages] - Procedure executed successfully, GetAllPropertyImages Records returned-3
+2020-08-05 17:33:33,089 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllProperty] - GetAllProperty Result:SUCCESS
+2020-08-05 17:33:33,089 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllProperty] - Procedure executed successfully, GetAllProperty Records returned-7
+2020-08-05 17:34:11,252 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminitiesType] - Retrieving GetAllAminitiesType 
+2020-08-05 17:34:11,255 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - Retrieving GetAllCompany 
+2020-08-05 17:34:11,255 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminities] - Retrieving GetAllAminities 
+2020-08-05 17:34:11,257 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllBuilding] - Retrieving GetAllBuilding 
+2020-08-05 17:34:11,261 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - GetAllCompany Result:SUCCESS
+2020-08-05 17:34:11,262 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - Procedure executed successfully, GetAllCompany Records returned-2
+2020-08-05 17:34:11,262 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminitiesType] - GetAllAminitiesType Result:SUCCESS
+2020-08-05 17:34:11,263 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminitiesType] - Procedure executed successfully, GetAllAminitiesType Records returned-13
+2020-08-05 17:34:11,262 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminities] - GetAllAminities Result:SUCCESS
+2020-08-05 17:34:11,264 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminities] - Procedure executed successfully, GetAllAminities Records returned-3
+2020-08-05 17:34:11,265 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllFloor] - Retrieving GetAllFloor 
+2020-08-05 17:34:11,271 [67] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUnit] - Retrieving GetAllUnit 
+2020-08-05 17:34:11,272 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllFloor] - GetAllFloor Result:SUCCESS
+2020-08-05 17:34:11,273 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllFloor] - Procedure executed successfully, GetAllFloor Records returned-5
+2020-08-05 17:34:11,278 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllBuilding] - GetAllBuilding Result:SUCCESS
+2020-08-05 17:34:11,279 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllBuilding] - Procedure executed successfully, GetAllBuilding Records returned-6
+2020-08-05 17:34:11,279 [67] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUnit] - GetAllUnit Result:SUCCESS
+2020-08-05 17:34:11,281 [67] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUnit] - Procedure executed successfully, GetAllUnit Records returned-4
+2020-08-05 17:34:11,291 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - Retrieving GetAllLocation 
+2020-08-05 17:34:11,292 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Retrieving Role Collections
+2020-08-05 17:34:11,294 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Retrieving All User Collections
+2020-08-05 17:34:11,295 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - GetAllLocation Result:SUCCESS
+2020-08-05 17:34:11,296 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - Procedure executed successfully, GetAllLocation Records returned-5
+2020-08-05 17:34:11,298 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - GetRoleCollection Result:SUCCESS
+2020-08-05 17:34:11,298 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Procedure executed successfully, GetRoleCollection Records returned-4
+2020-08-05 17:34:11,300 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - GetAllUserCollection Result:SUCCESS
+2020-08-05 17:34:11,301 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Procedure executed successfully, GetAllUserCollection Records returned-1
+2020-08-05 17:34:11,390 [70] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Retrieving Role Collections
+2020-08-05 17:34:11,391 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Retrieving All User Collections
+2020-08-05 17:34:11,392 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - GetAllUserCollection Result:SUCCESS
+2020-08-05 17:34:11,392 [61] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Procedure executed successfully, GetAllUserCollection Records returned-1
+2020-08-05 17:34:11,391 [70] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - GetRoleCollection Result:SUCCESS
+2020-08-05 17:34:11,393 [70] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Procedure executed successfully, GetRoleCollection Records returned-4
+2020-08-05 17:35:10,229 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminitiesType] - Retrieving GetAllAminitiesType 
+2020-08-05 17:35:10,230 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - Retrieving GetAllCompany 
+2020-08-05 17:35:10,229 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminities] - Retrieving GetAllAminities 
+2020-08-05 17:35:10,232 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllBuilding] - Retrieving GetAllBuilding 
+2020-08-05 17:35:10,233 [67] DEBUG iCovieApi.Controllers.covieadminController - [GetAllFloor] - Retrieving GetAllFloor 
+2020-08-05 17:35:10,235 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminities] - GetAllAminities Result:SUCCESS
+2020-08-05 17:35:10,235 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminities] - Procedure executed successfully, GetAllAminities Records returned-3
+2020-08-05 17:35:10,235 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminitiesType] - GetAllAminitiesType Result:SUCCESS
+2020-08-05 17:35:10,237 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllAminitiesType] - Procedure executed successfully, GetAllAminitiesType Records returned-13
+2020-08-05 17:35:10,237 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - GetAllCompany Result:SUCCESS
+2020-08-05 17:35:10,238 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllCompany] - Procedure executed successfully, GetAllCompany Records returned-2
+2020-08-05 17:35:10,238 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllBuilding] - GetAllBuilding Result:SUCCESS
+2020-08-05 17:35:10,239 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllBuilding] - Procedure executed successfully, GetAllBuilding Records returned-6
+2020-08-05 17:35:10,242 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUnit] - Retrieving GetAllUnit 
+2020-08-05 17:35:10,246 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - Retrieving GetAllLocation 
+2020-08-05 17:35:10,247 [67] DEBUG iCovieApi.Controllers.covieadminController - [GetAllFloor] - GetAllFloor Result:SUCCESS
+2020-08-05 17:35:10,248 [67] DEBUG iCovieApi.Controllers.covieadminController - [GetAllFloor] - Procedure executed successfully, GetAllFloor Records returned-5
+2020-08-05 17:35:10,247 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUnit] - GetAllUnit Result:SUCCESS
+2020-08-05 17:35:10,249 [64] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUnit] - Procedure executed successfully, GetAllUnit Records returned-4
+2020-08-05 17:35:10,247 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Retrieving All User Collections
+2020-08-05 17:35:10,247 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Retrieving Role Collections
+2020-08-05 17:35:10,251 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - GetAllLocation Result:SUCCESS
+2020-08-05 17:35:10,252 [66] DEBUG iCovieApi.Controllers.covieadminController - [GetAllLocation] - Procedure executed successfully, GetAllLocation Records returned-5
+2020-08-05 17:35:10,254 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - GetRoleCollection Result:SUCCESS
+2020-08-05 17:35:10,254 [65] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Procedure executed successfully, GetRoleCollection Records returned-4
+2020-08-05 17:35:10,254 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - GetAllUserCollection Result:SUCCESS
+2020-08-05 17:35:10,255 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Procedure executed successfully, GetAllUserCollection Records returned-1
+2020-08-05 17:35:10,259 [69] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Retrieving Role Collections
+2020-08-05 17:35:10,260 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Retrieving All User Collections
+2020-08-05 17:35:10,261 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - GetAllUserCollection Result:SUCCESS
+2020-08-05 17:35:10,261 [62] DEBUG iCovieApi.Controllers.covieadminController - [GetAllUserCollection] - Procedure executed successfully, GetAllUserCollection Records returned-1
+2020-08-05 17:35:10,260 [69] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - GetRoleCollection Result:SUCCESS
+2020-08-05 17:35:10,262 [69] DEBUG iCovieApi.Controllers.covieadminController - [GetRoleCollection] - Procedure executed successfully, GetRoleCollection Records returned-4
