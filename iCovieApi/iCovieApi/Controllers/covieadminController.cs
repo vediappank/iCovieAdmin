@@ -32,7 +32,7 @@ namespace iCovieApi.Controllers
         #region "Company"
         [HttpGet]
         [ActionName("GetAllCompany")]
-        //public List<CompanyModel> GetAllCompany(int cityID)
+        
              public List<CompanyModel> GetAllCompany()
         {
             DataTable dtData = null;
