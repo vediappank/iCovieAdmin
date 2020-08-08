@@ -17,7 +17,6 @@ using System.Web;
 using iCovieApi.Models;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using iCovieApi.Models;
 
 namespace iCovieApi.Controllers
 {
