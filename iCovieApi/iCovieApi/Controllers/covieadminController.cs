@@ -1985,7 +1985,6 @@ namespace iCovieApi.Controllers
                     cmd.Parameters.AddWithValue("@I_bedcount", Unit.bedcount);
                     cmd.Parameters.AddWithValue("@I_squarefeet", Unit.squarefeet);
                     cmd.Parameters.AddWithValue("@I_price", Unit.price);
-
                     cmd.Parameters.AddWithValue("@I_CID", Unit.cid);
                     cmd.Parameters.Add(outErrorCode);
                     cmd.Parameters.Add(outErrorDesc);
