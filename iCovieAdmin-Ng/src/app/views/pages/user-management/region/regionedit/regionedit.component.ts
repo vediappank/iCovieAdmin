@@ -43,7 +43,7 @@ import { filter } from 'minimatch';
 })
 export class regioneditcomponent implements OnInit {
 	allCountrys: MCountryModel[] = [];
-	unassignedCountrys: MCountryModel[] = [];
+	filteredCountrys: MCountryModel[] = [];
 	assignedCountrys: MCountryModel[] = [];
 	CountryIdForAdding: number;
 	CountrysSubject = new BehaviorSubject<number[]>([]);
@@ -109,30 +109,20 @@ export class regioneditcomponent implements OnInit {
 			this.Region.shortname = res.shortname;
 			this.Region.countryid = res.countryid;
 			this.Region.isCore = res.isCore;
-			let v=[];
-			v[0] =res.countryid; 
-			this.CountrysSubject.next(v[0]);
-			this.CountryIdForAdding = Number(v[0].toString());
+		
+			this.CountryIdForAdding = Number(res.countryid);
 		});
-		this.auth.GetALLCountry().subscribe((Country: MCountryModel[]) => {
-			each(Country, (_Country: MCountryModel) => {				
-				this.allCountrys.push(_Country);
-				this.unassignedCountrys.push(_Country);			
-			});
+		this.auth.GetALLCountry().subscribe((_Country: MCountryModel[]) => {
+				
+				this.allCountrys= _Country;
+				this.filteredCountrys =this.allCountrys;			
+		
 			if (this.issuperadmin == "False") {
-				this.allCountrys = this.allCountrys.filter(row => row.id == this.CountryID)
-				this.unassignedCountrys = this.unassignedCountrys.filter(row => row.id == this.CountryID);
+				
+				this.filteredCountrys = this.allCountrys.filter(row => row.id == this.CountryID);
 			}
 
-			each([Number(this.CountrysSubject.value.toString())], (roleId: number) => {
-				const Country = find(this.allCountrys, (_Country: MCountryModel) => {
-					return _Country.id === roleId;
-				});
-				if (Country) {
-					this.assignedCountrys.push(Country);
-					remove(this.unassignedCountrys, Country);
-				}
-			});
+			
 		});
 	}
 
@@ -159,10 +149,9 @@ export class regioneditcomponent implements OnInit {
 
 		const _Region = new MRegionModel();
 		_Region.id = this.Region.id;
-		if (this.CountryIdForAdding != undefined)
+	
 			_Region.countryid = this.CountryIdForAdding;
-		else
-			_Region.countryid = Number(this.CountrysSubject.value);
+	
 		_Region.regionname = this.Region.regionname;
 		_Region.shortname = this.Region.shortname;
 		//_Region.Countryid = this.CountryID;

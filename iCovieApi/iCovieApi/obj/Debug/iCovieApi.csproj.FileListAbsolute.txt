@@ -202,3 +202,4 @@ D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\bin\Microsoft.Owin.Security.MicrosoftA
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\bin\System.Web.Http.Owin.xml
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\obj\Debug\iCovieApi.dll
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\obj\Debug\iCovieApi.pdb
+D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\obj\Debug\iCovieApi.csprojResolveAssemblyReference.cache
