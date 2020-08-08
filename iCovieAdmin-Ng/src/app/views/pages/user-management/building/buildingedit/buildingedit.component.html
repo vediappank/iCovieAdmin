@@ -25,7 +25,8 @@
                             <mat-form-field class="mat-form-field-fluid">
                                 <mat-select placeholder="Select Company"  [(ngModel)]="CompanyIdForAdding" (selectionChange)="getLocationByCompany()">
                                     <mat-option *ngFor="let Company of unassignedCompanys" value="{{ Company.id }}" >
-                                        {{Company.companyname}}</mat-option>
+                                        {{Company.companyname}}
+                                    </mat-option>
                                 </mat-select>
                                 
                             </mat-form-field>
