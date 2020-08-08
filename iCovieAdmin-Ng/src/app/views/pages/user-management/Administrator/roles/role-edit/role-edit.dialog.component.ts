@@ -32,7 +32,6 @@ import { delay } from 'rxjs/operators';
 //START MAT TREE 
 
 import { privilege } from '../../../../../../core/auth/_models/privilege.model'
-
 import { AuthService } from '../../../../../../core/auth';
 import { filter } from 'minimatch';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -40,13 +39,6 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { BehaviorSubject } from 'rxjs';
-
-
-
-
-
-
-
 
 @Component({
 	selector: 'kt-role-edit-dialog',
@@ -79,13 +71,13 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 	LocationID: number;
 
 	allCompanys: MCompanyModel[] = [];
-	unassignedCompanys: MCompanyModel[] = [];
+	filteredCompanys: MCompanyModel[] = [];
 	assignedCompanys: MCompanyModel[] = [];
 	CompanyIdForAdding: number;
 	CompanysSubject = new BehaviorSubject<number[]>([]);
 
 	allLocations: MLocationModel[] = [];
-	unassignedLocations: MLocationModel[] = [];
+	filteredLocations: MLocationModel[] = [];
 	assignedLocations: MLocationModel[] = [];
 	LocationIdForAdding: number;
 	LocationsSubject = new BehaviorSubject<number[]>([]);
@@ -154,53 +146,25 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 			//alert(this.role.isCoreRole);
 		});
 
-		this.auth.GetALLCompany().subscribe((users: MCompanyModel[]) => {
-			each(users, (_Company: MCompanyModel) => {
-				this.allCompanys.push(_Company);
-				this.unassignedCompanys.push(_Company);
-			});
+		this.auth.GetALLCompany().subscribe((_users: MCompanyModel[]) => {			
+				this.allCompanys= _users;
+				this.filteredCompanys= _users;
+			
 			if (this.issuperadmin == "True") {
 				this.allCompanys = this.allCompanys;
-				this.unassignedCompanys = this.unassignedCompanys;
+				this.filteredCompanys = this.allCompanys;
 			}
 			else if (this.isadmin == "True") {
 				this.allCompanys = this.allCompanys.filter(row => row.id == this.CompanyID)
-				this.unassignedCompanys = this.unassignedCompanys.filter(row => row.id == this.CompanyID);
+				this.filteredCompanys = this.allCompanys.filter(row => row.id == this.CompanyID);
 			}
-
-			each([Number(this.CompanysSubject.value.toString())], (companyId: number) => {
-				const Company = find(this.allCompanys, (_Company: MCompanyModel) => {
-					return _Company.id === companyId;
-				});
-				if (Company) {
-					this.assignedCompanys.push(Company);
-					remove(this.unassignedCompanys, Company);
-				}
-				else {
-					this.unassignedCompanys = this.allCompanys;
-				}
-			});
+			this.getLocationByCompany();
+			
 		});
 
-		this.auth.GetALLLocation().subscribe((users: MLocationModel[]) => {
-			each(users, (_Location: MLocationModel) => {
-				this.allLocations.push(_Location);
-				this.unassignedLocations.push(_Location);
-			});
-
-			each([Number(this.LocationsSubject.value.toString())], (locationId: number) => {
-				const Location = find(this.allLocations, (_Location: MLocationModel) => {
-					return _Location.id === locationId;
-				});
-				if (Location) {
-					this.assignedLocations.push(Location);
-					remove(this.unassignedLocations, Location);
-				}
-				else {
-					this.unassignedLocations = this.allLocations;
-				}
-
-			});
+		this.auth.GetALLLocation().subscribe((_location: MLocationModel[]) => {		
+				this.allLocations= _location;
+				this.filteredLocations= _location;
 		});
 	}
 	/**
@@ -265,24 +229,12 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 
 		_role.id = this.role.id;
 		_role.permissions = this.mainmenuPriviegefromArrays;
-
-		if (this.CompanyIdForAdding != undefined)
-			_role.companyid = Number(this.CompanyIdForAdding);
-		else
-			_role.companyid = Number(this.CompanysSubject.value);
-
-		if (this.LocationIdForAdding != undefined)
+			_role.companyid = Number(this.CompanyIdForAdding);		
 			_role.locationid = Number(this.LocationIdForAdding);
-		else
-			_role.locationid = Number(this.LocationsSubject.value);
-
-		//_role.orgpermissions = this.checklistSelection.selected;
 		_role.RoleName = this.role.RoleName;
 		_role.RoleShortName = this.role.RoleShortName;
 		_role.isCoreRole = this.role.isCoreRole;
-		_role.isadmin = this.role.isadmin;
-		// _role.companyid = this.CompanyID;
-		// _role.locationid = this.LocationID;
+		_role.isadmin = this.role.isadmin;		
 		return _role;
 	}
 
@@ -347,8 +299,7 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 			if (Number(data.split('~')[1]) == -1) {
 				this.viewLoading = false;
 				alert(data.split('~')[0]);
-				return false;
-				
+				return false;				
 			}
 			else {
 				this.viewLoading = false;
@@ -356,9 +307,7 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 					_role,
 					isEdit: false
 				});
-
 			}
-
 		});
 	}
 
@@ -373,9 +322,9 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 
 	getLocationByCompany() {
 		if (this.allLocations.length > 0) {
-			this.unassignedLocations = this.allLocations.filter(row => row.companyid == Number(this.CompanyIdForAdding));
+			this.filteredLocations = this.allLocations.filter(row => row.companyid == Number(this.CompanyIdForAdding));
 		}
-		this.LocationIdForAdding = this.unassignedLocations[0].id;
+		this.LocationIdForAdding = this.filteredLocations[0].id;
 	}
 
 	/** UI */
@@ -399,13 +348,7 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 
 		return 'Assign Menu Permissions';
 	}
-	// getOrgnaizationTitle(): string {
-
-	// 	if (this.role && this.role.id) {
-	// 		return `Modifiy Organization Permissions`;
-	// 	}
-	// 	return 'Assign Organization Permissions';
-	// }
+	
 
 	/**
 	 * Returns is title valid
