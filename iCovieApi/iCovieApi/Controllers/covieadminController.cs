@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Owin.Security;
+﻿using Microsoft.Owin.Security;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,12 +11,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-
-
 using iCovieApi.HelperClass;
 using System.Web;
 using System.IO;
-
 using iCovieApi.Models;
 using System.Drawing;
 using System.Drawing.Drawing2D;
