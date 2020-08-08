@@ -1,0 +1,98 @@
+<kt-portlet>
+	<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'" [viewLoading$]="loading$">
+		
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+		<mat-tab-group [(selectedIndex)]="selectedTab">
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Company
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+                  <kt-Companylist></kt-Companylist>
+                    
+                    </div>
+                    
+				</ng-template>
+			</mat-tab>
+			<!-- <mat-tab *ngIf="user" [disabled]="!user || !user.id"> -->
+				
+			<mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Location
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-Locationlist></kt-Locationlist>
+                </div>
+				</ng-template>
+			</mat-tab>
+
+			<mat-tab>
+				<kt-alert *ngIf="hasFormErrors1" type="warn" [showCloseButton]="true" [duration]="10000"
+								(close)="onAlertClose($event)">
+								Oh snap! Change a few things up and try submitting again.
+							</kt-alert>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Building
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+						<kt-Buildinglist></kt-Buildinglist>
+					</div>
+				</ng-template>
+			</mat-tab>
+            <mat-tab>
+				<kt-alert *ngIf="hasFormErrors1" type="warn" [showCloseButton]="true" [duration]="10000"
+								(close)="onAlertClose($event)">
+								Oh snap! Change a few things up and try submitting again.
+							</kt-alert>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Floor
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+						<kt-Floorlist></kt-Floorlist>
+					</div>
+				</ng-template>
+            </mat-tab>
+            <mat-tab>
+				<kt-alert *ngIf="hasFormErrors1" type="warn" [showCloseButton]="true" [duration]="10000"
+								(close)="onAlertClose($event)">
+								Oh snap! Change a few things up and try submitting again.
+							</kt-alert>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Units
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+						<kt-Winglist></kt-Winglist>
+					</div>
+				</ng-template>
+			</mat-tab>
+			<mat-tab>
+				<kt-alert *ngIf="hasFormErrors1" type="warn" [showCloseButton]="true" [duration]="10000"
+								(close)="onAlertClose($event)">
+								Oh snap! Change a few things up and try submitting again.
+							</kt-alert>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Units Type
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+						<kt-wingtypelist></kt-wingtypelist>
+					</div>
+				</ng-template>
+			</mat-tab>
+			
+		</mat-tab-group>
+	</kt-portlet-body>
+</kt-portlet>

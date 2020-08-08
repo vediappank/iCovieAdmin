@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery transfer</title>
+    <link rel="stylesheet" type="text/css" href="icon_font/css/icon_font.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.transfer.css?v=0.0.2" />
+    <style>
+        .transfer-demo {
+            width: 640px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>    
+        
+        <div id="transfer4" class="transfer-demo"></div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.transfer.js?v=0.0.4"></script>
+
+
+
+
+
+<script>
+var groupDataArray2 = [
+        {
+            "groupName": "China",
+            "groupData": [
+                {
+                    "city": "Beijing",
+                    "value": 122,
+                    "selected": true
+                },
+                {
+                    "city": "Shanghai",
+                    "value": 643
+                },
+                {
+                    "city": "Qingdao",
+                    "value": 422
+                },
+                {
+                    "city": "Tianjin",
+                    "value": 622
+                }
+            ]
+        },
+        {
+            "groupName": "Japan",
+            "groupData": [
+                {
+                    "city": "Tokyo",
+                    "value": 132,
+                    "selected": true
+                },
+                {
+                    "city": "Osaka",
+                    "value": 112,
+                    "selected": true
+                },
+                {
+                    "city": "Yokohama",
+                    "value": 191,
+                    "selected": true
+                }
+            ]
+        }
+    ];
+
+    var settings4 = {
+        "groupDataArray": groupDataArray2,
+        "groupItemName": "groupName",
+        "groupArrayName": "groupData",
+        "itemName": "city",
+        "valueName": "value",
+        "callable": function (items) {
+            console.dir(items)
+        }
+    };
+
+    var transfer = $("#transfer4").transfer(settings4);
+    // get selected items
+    var items = transfer.getSelectedItems()
+    console.log("Manually get selected items: %o", items);
+</script>
+</html>

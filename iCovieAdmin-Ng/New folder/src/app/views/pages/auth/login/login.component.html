@@ -1,0 +1,41 @@
+
+
+<!--begin::Body-->
+<div class="kt-login__body">
+	<!--begin::Signin-->
+	<div class="kt-login__form">
+		
+
+		<kt-auth-notice ></kt-auth-notice>
+		<div class="kt-login__signin">
+				<div class="kt-login__head">
+					<h3 class="kt-login__title" style="color:black;">Sign In To iCovie</h3>
+				</div>
+				
+		<form class="kt-form" [formGroup]="loginForm" autocomplete="off">
+			<div class="input-group">
+				
+					
+					<input matInput class="form-control" style="background-color: #FEB300; border: cornsilk 1px solid; color:black;"  type="username"  formControlName="username" autocomplete="off"/>
+					
+				
+			</div>
+			<div class="input-group" >
+					<!-- <mat-label>{{ 'AUTH.INPUT.PASSWORD' | translate }}</mat-label> -->
+					<input matInput class="form-control" style="background-color: #FEB300; border: cornsilk 1px solid; color:black;"  type="password" formControlName="password" autocomplete="off"/>
+					
+				
+			</div>
+			
+			<div class="kt-login__actions">
+				
+				<button (click)="submit()" style="background-color: #FEB300; ; border: cornsilk 1px solid; color:black;" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">{{ 'AUTH.LOGIN.BUTTON' | translate }}</button>
+			</div>
+			<!--end::Action-->
+		</form>
+	</div>
+		
+	</div>
+	<!--end::Signin-->
+</div>
+<!--end::Body-->

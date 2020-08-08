@@ -1,0 +1,80 @@
+<kt-portlet>
+	<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'" [viewLoading$]="loading$">
+		
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+		<mat-tab-group >
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Business Category
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+                  <kt-businesscategorylist></kt-businesscategorylist>                    
+                    </div>                    
+				</ng-template>
+			</mat-tab>
+			<!-- <mat-tab *ngIf="user" [disabled]="!user || !user.id"> -->
+				
+			<mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Property Category
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-propertycartegorylist></kt-propertycartegorylist>
+                </div>
+				</ng-template>
+            </mat-tab>
+            <mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Property Type
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-propertytypelist></kt-propertytypelist>
+                </div>
+				</ng-template>
+            </mat-tab>
+           
+            <mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs" ></i>
+					Bed Type
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-bedtypelist></kt-bedtypelist>
+                </div>
+				</ng-template>
+            </mat-tab>
+            <mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Guest Type
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-guesttypelist></kt-guesttypelist>
+                </div>
+				</ng-template>
+			</mat-tab>
+            <mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Property
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-propertylist></kt-propertylist>
+                </div>
+				</ng-template>
+			</mat-tab>
+			
+		</mat-tab-group>
+	</kt-portlet-body>
+</kt-portlet>

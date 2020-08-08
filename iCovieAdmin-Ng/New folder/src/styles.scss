@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+@import "~highlight.js/styles/googlecode.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~open-iconic/font/css/open-iconic-bootstrap.css';
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+// hide bootstrap dropdown arrow globally
+.dropdown-toggle::after {
+	display: none !important;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+	min-width: 600px !important;
+	width: 100% !important;
+}
+
+.position-static {
+	position: static;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+	min-width: 600px !important;
+	width: 100% !important;
+}
+
+.mat-form-field-label {
+  
+	font-size: 1.1em !important;
+	font-weight: bold;
+	}
+// mat-form-field span.mat-form-field-label-wrapper label {
+// //   color:black !important;
+
+// //font-weight: bold;
+//   }
+mat-form-field.mat-focused span.mat-form-field-label-wrapper label {
+  color:blue !important;
+  font-size: 16px !important;
+  //background-color:  #FEB300;	
+  //font-weight: 100;
+}
+.mat-hint
+{
+	font-size: 12px;
+    color: #000 !important;
+}
+
+.mat-sort-header-container
+{
+	color:#000;
+	font-size: 14px;
+	font-weight: bold;
+}
+.mat-header-row
+{
+	background-color:  #FEB300;	
+	border-radius: 5px;
+}
+::ng-deep .mat-column-actions
+{
+	color:#000;
+	font-size: 14px;
+	font-weight: bold;
+}
+::ng-deep .kt-portlet__head-title
+{
+	font-weight: bold;
+}
+
+.mat-form-field-infix
+{
+	font-size: 15px;
+}
+
+
+
+
+
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+

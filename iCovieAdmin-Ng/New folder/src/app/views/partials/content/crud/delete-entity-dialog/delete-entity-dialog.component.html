@@ -1,0 +1,48 @@
+<div class="kt-portlet">
+	<div class="kt-portlet__head kt-portlet__head__custom">
+		<div class="kt-portlet__head-progress">
+			<!-- here can place a progress bar-->
+			<mat-progress-bar mode="indeterminate" *ngIf="viewLoading"></mat-progress-bar>
+		</div>
+		<div class="kt-portlet__head-label">
+			<h3 class="kt-portlet__head-title">{{data.title}}</h3>
+			<span class="kt-portlet__head-icon kt-hide">
+				<i class="la la-gear"></i>
+			</span>
+		</div>
+	</div>
+	<div class="kt-form">
+		<div class="kt-portlet__body">
+			<kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true"
+				(close)="onAlertClose($event)">
+			   {{ErrorMessage}}
+			</kt-alert>
+			<div class="form-group kt-form__group row">
+				<div class="col-lg-12" style="color: black;">
+					{{viewLoading ? data.waitDesciption : data.description}}
+				</div>
+
+				<div class="col-lg-12" *ngIf="data.buttonType === 'Completed Meeting'" style="margin-top: 10px;">
+						
+								<mat-form-field class="mat-form-field-fluid">
+									<textarea matInput placeholder="Enter Completed Summary" [(ngModel)]="data.cancelDescription" rows="15"></textarea>
+								</mat-form-field>
+							
+					</div>
+					<div class="col-lg-12" *ngIf="data.buttonType === 'Cancel Meeting'" style="margin-top: 10px;">
+						
+							<mat-form-field class="mat-form-field-fluid">
+								<textarea matInput placeholder="Enter Cancel Summary" [(ngModel)]="data.cancelDescription" rows="15"></textarea>
+							</mat-form-field>
+						
+				</div>
+			</div>
+		</div>
+		<div class="kt-portlet__foot kt-portlet__no-border kt-portlet__foot--fit text-right">
+			<div class="kt-form__actions kt-form__actions--sm">
+				<button mat-button (click)="onNoClick()">Cancel</button>&nbsp;
+				<button mat-button (click)="onYesClick()" color="primary" cdkFocusInitial [disabled]="viewLoading" [disabled]="!isTitleValid()">{{data.buttonText}}</button>
+			</div>
+		</div>
+	</div>
+</div>

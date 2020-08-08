@@ -1,0 +1,16 @@
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-cell:nth-child(2),
+  .mat-header-cell:nth-child(2)
+  {
+  flex: 0 0 18%;
+  }
+  .mat-cell:nth-child(3),
+  .mat-header-cell:nth-child(3)
+  {
+  flex: 0 0 16%;
+  }
+  

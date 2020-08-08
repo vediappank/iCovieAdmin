@@ -1,0 +1,304 @@
+<div class="kt-portlet"
+    [ngClass]="{ 'kt-portlet--body-progress' : viewLoading, 'kt-portlet--body-progress-overlay' : loadingAfterSubmit }"
+    style="width: 1000px;">
+    <div class="kt-portlet__head kt-portlet__head__custom" *ngIf="role">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">{{getTitle()}}</h3>
+        </div>
+    </div>
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>note_add</mat-icon>
+                <b>{{getAssignTitle()}}</b>
+            </ng-template>
+
+
+            <div *ngIf="role">
+                <div class="kt-form">
+                    <div class="kt-portlet__body">
+
+                        <div class="kt-portlet__body-progress">
+                            <mat-spinner [diameter]="20"></mat-spinner>
+                        </div>
+                        <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true"
+                            (close)="onAlertClose($event)">
+                            Oh snap! Change a few things up and try submitting again.
+                        </kt-alert>
+                        <!-- <h6 class="kt-section__heading mainmenu" style="font-size: 18px; padding: 0px 0px 12px 0px;">
+                            {{getTitle()}}
+                        </h6>
+                        <div class="kt-separator kt-separator--dashed"></div> -->
+                        <div class="kt-form__section kt-form__section--first">
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Company" [(ngModel)]="CompanyIdForAdding"
+                                                (selectionChange)="getLocationByCompany()">
+                                                <mat-option *ngFor="let Company of unassignedCompanys" value="{{ Company.id }}">
+                                                    {{Company.companyname}}</mat-option>
+                                            </mat-select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Location" [(ngModel)]="LocationIdForAdding">
+                                                <mat-option *ngFor="let Location of unassignedLocations" value="{{ Location.id }}">
+                                                    {{Location.locationname}}</mat-option>
+                                            </mat-select>
+                                
+                                        </mat-form-field>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                            <div class="kt-margin-bottom-20-mobile">
+                                                <div class="kt-list-timeline kt-list-timeline--user-role">
+                                                    <h6 class="kt-section__heading">
+                                                        Assigned Company
+                                                    </h6>
+                                                    <div class="kt-list-timeline__items">
+                                
+                                                        <div class="kt-list-timeline__item m-0 p-0" *ngFor="let _Company of assignedCompanys">
+                                
+                                                            <span class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                            <span class="kt-list-timeline__text">{{ _Company.companyname }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                            <div class="kt-margin-bottom-20-mobile">
+                                                <div class="kt-list-timeline kt-list-timeline--user-role">
+                                                    <h6 class="kt-section__heading">
+                                                        Assigned Location
+                                                    </h6>
+                                                    <div class="kt-list-timeline__items">
+                                
+                                                        <div class="kt-list-timeline__item m-0 p-0" *ngFor="let _Location of assignedLocations">
+                                
+                                                            <span class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                            <span class="kt-list-timeline__text">{{ _Location.locationname }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile purple-border">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <input matInput [disabled]="role.isCoreRole" placeholder="Enter Role" [(ngModel)]="role.RoleName"
+                                                autofocus />
+                                            <mat-error>Role is
+                                                <strong>required</strong>
+                                            </mat-error>
+                                            <!-- <mat-hint align="start">Please enter
+                                                                    <strong>Role</strong>
+                                                                </mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <input matInput [disabled]="role.isCoreRole" placeholder="Enter Role Short Name"
+                                                [(ngModel)]="role.RoleShortName" />
+                                            <mat-error>Role is
+                                                <strong>required</strong>
+                                            </mat-error>
+                                            <!-- <mat-hint align="start">Please enter
+                                                                    <strong>RoleShortName</strong>
+                                                                </mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="kt-form__section kt-form__section--first">
+                            <div class="form-group kt-form__group row">
+
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <div class="mat-form-field-fluid">                                     
+                                        <mat-checkbox [(ngModel)]="role.isadmin">isAdmin</mat-checkbox>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <div class="kt-separator kt-separator--dashed"></div>
+                        <h6 class="kt-section__heading mainmenu" style="font-size: 18px; padding: 0px 0px 12px 0px;">
+                            {{getAssignTitle()}}
+                        </h6>
+                        <!--Edit Role Action Logics-->
+                        <div *ngIf="role.isCoreRole == undefined">
+                            <mat-accordion class="example-headers-align"
+                                *ngFor="let mmc of menuCollection; index as i2">
+                                <mat-expansion-panel [expanded]="step === i2" (opened)="setStep(i2)" hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <mat-icon color="primary">account_circle</mat-icon><b>{{mmc.title | uppercase}}</b>
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            Configure {{mmc.title | titlecase}} Pages Permissions
+                                            <mat-icon>account_circle</mat-icon>
+                                            <!-- <mat-icon *ngIf="i2 ==1">account_circle</mat-icon>
+                                            <mat-icon *ngIf="i2 ==2">assignment</mat-icon>
+                                            <mat-icon *ngIf="i2 ==3">dashboard</mat-icon>                                            
+                                            <mat-icon *ngIf="i2 ==menuCollection.length-1">receipt</mat-icon> -->
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <!--Sub Menu Privillage Configuration-->
+                                    <div *ngIf="mmc.submenu; else elseBlock">
+                                        <div *ngFor="let smc of mmc.submenu; index as j1" class="row">
+                                            <div class=" col-lg-12 kt-margin-bottom-20-mobile">
+                                                <label class=" form-check-label submenu">
+                                                    <b> {{smc.title  | uppercase}}</b>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-2" style=" margin-top:10px; margin-left:10px; "
+                                                *ngFor="let pvc of privilegeCollection; index as k1">
+                                                <mat-radio-group name="{{mmc.menuId+ '-'+smc.title+ '-'+ smc.menuId}}"
+                                                    aria-label="Select an option" *ngIf="k1 <= mmc.privilege_option">
+                                                    <mat-radio-button (change)="onChangePrivilege($event, pvc)"
+                                                        [checked]="(smc.privilegeid ===pvc.privilege_id) ?  true : false"
+                                                        value="{{pvc.privilege_id}}">
+                                                        {{pvc.privilege_description | titlecase}}
+                                                    </mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-template #elseBlock>
+                                        <div class="col-lg-2 kt-margin-bottom-20-mobile" style=" margin-top:10px;"
+                                            *ngFor="let pvc of privilegeCollection; index as l1">
+                                            <mat-radio-group name="{{mmc.title+ '-'+ mmc.menuId}}"
+                                                aria-label="Select an option" *ngIf="l1 <= mmc.privilege_option">
+                                                <mat-radio-button (change)="onChangePrivilege($event, pvc)"
+                                                    [checked]="(mmc.privilegeid ===pvc.privilege_id) ?  true : false"
+                                                    value="{{pvc.privilege_id}}">
+                                                    {{pvc.privilege_description | titlecase}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </ng-template>
+
+                                    <mat-action-row *ngIf="i2 == 0">
+                                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                    </mat-action-row>
+                                    <mat-action-row *ngIf="i2 > 0 && i2 != menuCollection.length-1">
+                                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                    </mat-action-row>
+                                    <mat-action-row *ngIf="i2 == menuCollection.length-1">
+                                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                                        <button mat-button color="primary" (click)="nextStep()">End</button>
+                                    </mat-action-row>
+                                </mat-expansion-panel>
+
+
+                            </mat-accordion>
+                        </div>
+                        <!--New Role Action Logies-->
+                        <div *ngIf="role.isCoreRole == false">
+
+
+                            <mat-accordion class="example-headers-align"
+                                *ngFor="let mmc of menuCollection; index as i3">
+                                <mat-expansion-panel [expanded]="step === i3" (opened)="setStep(i3)" hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <mat-icon color="primary">account_circle</mat-icon><b> {{mmc.title | uppercase}}</b>
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            <p style="color: blue;">Configure {{mmc.title | titlecase}} Pages Permissions</p>
+                                            <!-- <mat-icon *ngIf="i3 ==0">dashboard</mat-icon>
+                                            <mat-icon *ngIf="i3 ==1">account_circle</mat-icon>
+                                            <mat-icon *ngIf="i3 ==menuCollection.length-1">receipt</mat-icon> -->
+                                          
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <!--Sub Menu Privillage Configuration-->
+                                    <div *ngIf="mmc.submenu; else elseBlock">
+                                        <div *ngFor="let smc of mmc.submenu; index as j" class="row">
+                                            <div class=" col-lg-12 kt-margin-bottom-20-mobile">
+                                                <label class=" form-check-label submenu">
+                                                    <b>{{smc.title  | uppercase}}</b>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-2" style=" margin-top:10px; margin-left:10px; "
+                                                *ngFor="let pvc of privilegeCollection; index as k">
+                                                <mat-radio-group name="{{mmc.menuId+ '-'+smc.title+ '-'+ smc.menuId}}"
+                                                    aria-label="Select an option" *ngIf="k <= mmc.privilege_option">
+                                                    <mat-radio-button (change)="onChangePrivilege($event, pvc)"
+                                                        value="{{pvc.privilege_id}}">
+                                                        {{pvc.privilege_description | titlecase}}
+                                                    </mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-template #elseBlock>
+                                        <div class="col-lg-2 " style=" margin-top:10px;"
+                                            *ngFor="let pvc of privilegeCollection; index as l">
+                                            <mat-radio-group name="{{mmc.title+ '-'+ mmc.menuId}}"
+                                                aria-label="Select an option" *ngIf="l <= mmc.privilege_option">
+                                                <mat-radio-button (change)="onChangePrivilege($event, pvc)"
+                                                    value="{{pvc.privilege_id}}">
+                                                    {{pvc.privilege_description | titlecase}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </ng-template>
+
+                                    <mat-action-row *ngIf="i3 == 0">
+                                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                    </mat-action-row>
+                                    <mat-action-row *ngIf="i3 > 0 && i3 != menuCollection.length-1">
+                                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                    </mat-action-row>
+                                    <mat-action-row *ngIf="i3 == menuCollection.length-1">
+                                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                                        <button mat-button color="primary" (click)="nextStep()">End</button>
+                                    </mat-action-row>
+                                </mat-expansion-panel>
+
+
+                            </mat-accordion>
+                            <!-- This is for Expand and -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </mat-tab>
+        
+
+    </mat-tab-group>
+    <div class="kt-form">
+        <div class="kt-portlet__foot kt-portlet__foot--fit kt-portlet__no-border">
+            <div class="kt-form__actions kt-form__actions--solid">
+                <div class="row text-right">
+                    <div class="col-lg-12">
+                        <button type="button" mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial
+                            matTooltip="Cancel changes">
+                            Cancel
+                        </button>&nbsp;
+                        <button type="button" [disabled]="!isTitleValid() || role.isCoreRole" mat-raised-button
+                            color="primary" (click)="onSubmit()" [disabled]="viewLoading" matTooltip="Save changes">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

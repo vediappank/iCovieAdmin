@@ -1,0 +1,23 @@
+<div class="kt-widget1">
+	<ng-container *ngFor="let item of data" >
+		<ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
+	</ng-container>
+</div>
+
+<ng-template #itemTemplate let-item="item" >
+	<div class="kt-widget1__item" >
+		<div class="kt-widget1__info">
+			<h3 class="kt-widget1__title" >{{item.title}} 	
+				
+				<span *ngIf="item.popupIcon">
+					
+					&nbsp;&nbsp;<img src='./assets/media/logos/Agent-f.png' color="warn" width="20px" height="20px" title="Agent Based Popup Info" (click)="SendAgentActiontoParent(item.title, 'Agent')">										
+						&nbsp;&nbsp;
+				<img src='./assets/media/logos/teams_f.png' width="30px" height="30px" title="Team Based Popup Info" (click)="SendTeamActiontoParent(item.title,'Supervisor')">
+			</span>			
+			</h3>
+			<span class="kt-widget1__desc">{{item.desc}}</span>
+		</div>
+		<span class="kt-widget1__number" [ngClass]="item.valueClass" (click)="SendLabeltoParent(item.title)">{{item.value}}</span>
+	</div>
+</ng-template>

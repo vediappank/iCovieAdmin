@@ -1,0 +1,23 @@
+<form class="form-group col-lg-12" style="display:block;" name="agentActivityReports" #f="ngForm"
+(keydown.enter)="$event.preventDefault()">
+<div class="row">
+
+    <div class="col-lg-6 kt-margin-bottom-20-mobile p-3">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-select placeholder="Select Company" [(value)]="selectedCompany">
+                    <mat-option *ngFor="let orderby of defaultCompanys" value="{{ orderby.id }}">
+                            {{orderby.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-6 kt-margin-bottom-20-mobile p-3">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-select placeholder="Select Location" [(value)]="selectedLocation">
+                    <mat-option *ngFor="let orderby of defaultLocations" value="{{ orderby.id }}">
+                            {{orderby.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+</div>
+</form>

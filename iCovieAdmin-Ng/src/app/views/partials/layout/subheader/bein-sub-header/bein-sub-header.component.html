@@ -1,0 +1,74 @@
+<!-- begin:: Content Head -->
+
+<div [ngClass]="{'kt-container--clear': clear}" [hidden]="subheaderService.disabled$ | async" id="kt_subheader">
+	<div class="kt-container" [ngClass]="{'kt-container--fluid': fluid}" class="row">
+		<div class="col-xl-5" style=" padding: 10px 0px 0px 22px; ">
+			<h3 *ngIf="title" class="kt-subheader__title"
+				style="color: black; font-family: inherit; padding-left: 25px;" >	<mat-icon>assessment</mat-icon> {{title}}</h3>
+		</div>
+		<div  class="col-xl-2"  >
+				<a class="btn kt-subheader__btn-daterange" id="kt_dashboard_daterangepicker" data-placement="left"
+				style="background-color:#384ad7">
+				<span class="kt-subheader__btn-daterange-title" id="kt_dashboard_daterangepicker_title"
+					style="color: white; font-family: inherit;">From</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-date" id="kt_dashboard_daterangepicker_date"
+					style="color: white; font-family: inherit;">{{stDT}}</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-title" id="kt_dashboard_daterangepicker_title"
+					style="color: white; font-family: inherit;">To</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-date" id="kt_dashboard_daterangepicker_date"
+					style="color: white; font-family: inherit;">{{endDT }} </span>
+				<span class="kt-svg-icon " [inlineSVG]="'./assets/media/icons/svg/Communication/Chat-check.svg'"></span>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- <div class="kt-subheader kt-grid__item" [ngClass]="{'kt-container--clear': clear}"
+	[hidden]="subheaderService.disabled$ | async" id="kt_subheader">
+	<div class="kt-container" [ngClass]="{'kt-container--fluid': fluid}" class="row">
+		<div class="col-xl-8">
+			<h3 *ngIf="title" class="kt-subheader__title"
+				style="color: black; font-family: inherit; padding-left: 25px;">{{title}}</h3>
+		</div>
+		<div class="col" style="margin-top: -22px;">
+			<a class="btn kt-subheader__btn-daterange" id="kt_dashboard_daterangepicker" data-placement="left"
+				style="background-color:#341e6c">
+				<span class="kt-subheader__btn-daterange-title" id="kt_dashboard_daterangepicker_title"
+					style="color: white; font-family: inherit;">From</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-date" id="kt_dashboard_daterangepicker_date"
+					style="color: white; font-family: inherit;">{{stDT}}</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-title" id="kt_dashboard_daterangepicker_title"
+					style="color: white; font-family: inherit;">To</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-date" id="kt_dashboard_daterangepicker_date"
+					style="color: white; font-family: inherit;">{{endDT}}</span>
+				<span class="kt-svg-icon " [inlineSVG]="'./assets/media/icons/svg/Communication/Chat-check.svg'"></span>
+			</a>
+
+		</div>
+
+	 <div>
+		<h4 *ngIf="desc" class="kt-subheader__desc" style="color: black; font-family: inherit;">{{desc}}</h4>
+		<div class="kt-subheader__breadcrumbs" *ngIf="breadcrumbs.length > 0">
+			<span class="kt-subheader__separator" [hidden]="true"></span>
+			<a class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+			<ng-container *ngFor="let item of breadcrumbs">
+				<span class="kt-subheader__breadcrumbs-separator"></span>
+				<a [routerLink]="item.page" [queryParams]="item.queryParams" class="kt-subheader__breadcrumbs-link">
+					{{item.title}}
+				</a>
+			</ng-container>
+		</div> 
+	</div>
+ <div class="kt-subheader__toolbar">
+		<div class="kt-subheader__wrapper" style="margin-top: -22px;">
+			<a class="btn kt-subheader__btn-daterange" id="kt_dashboard_daterangepicker" data-placement="left"  style="background-color:#341e6c">
+				<span class="kt-subheader__btn-daterange-title" id="kt_dashboard_daterangepicker_title" style="color: white; font-family: inherit;">From</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-date" id="kt_dashboard_daterangepicker_date" style="color: white; font-family: inherit;">{{stDT}}</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-title" id="kt_dashboard_daterangepicker_title" style="color: white; font-family: inherit;">To</span>&nbsp;
+				<span class="kt-subheader__btn-daterange-date" id="kt_dashboard_daterangepicker_date" style="color: white; font-family: inherit;">{{endDT}}</span>
+				<span class="kt-svg-icon "
+					[inlineSVG]="'./assets/media/icons/svg/Communication/Chat-check.svg'"></span>
+			</a>
+		</div>
+	</div> 
+</div> -->
+<!-- end:: Content Head -->

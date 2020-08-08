@@ -1,0 +1,132 @@
+
+<div class="kt-portlet" [ngClass]="{ 'kt-portlet--body-progress' 
+: viewLoading, 'kt-portlet--body-progress-overlay' : 
+loadingAfterSubmit }" style="width: 1000px;">
+    <div class="kt-portlet__head kt-portlet__head__custom" *ngIf="Company">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">{{getTitle()}}</h3>
+        </div>
+    </div>
+    <div *ngIf="Company">
+        <div class="kt-form" >
+            <div class="kt-portlet__body">
+
+                <div class="kt-portlet__body-progress">
+                    <mat-spinner [diameter]="20"></mat-spinner>
+                </div>
+
+                <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true" (close)="onAlertClose($event)">
+                    Oh snap! Change a few things up and try submitting again.
+                </kt-alert>
+
+                <div class="kt-form__section kt-form__section--first">
+                  
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput                                     
+                                    placeholder="Enter Company"  
+                                    [(ngModel)]="Company.companyname" />
+                             
+                               
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput                                     
+                                    placeholder="Enter Company Short Name"  
+                                    [(ngModel)]="Company.shortname" />
+                              
+                               
+                            </mat-form-field>
+                        </div>
+                     
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="example-full-width">
+                                <textarea matInput                                     
+                                    placeholder="Enter Address1"  
+                                    [(ngModel)]="Company.address1"></textarea>
+                             
+                              
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="example-full-width">
+                                <textarea matInput                                     
+                                    placeholder="Enter Address2"  
+                                    [(ngModel)]="Company.address2"></textarea>
+                              
+                               
+                            </mat-form-field>
+                        </div>
+                     
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput                                     
+                                    placeholder="Enter Pin Code"  
+                                    [(ngModel)]="Company.pincode" />
+                             
+                               
+                            </mat-form-field>
+                        </div>
+                        
+                     
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select City" [(ngModel)]="CityIdForAdding">
+                                    <mat-option *ngFor="let City of unassignedCitys" value="{{ City.id }}">
+                                        {{City.cityname}}</mat-option>
+                                </mat-select>
+                                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned City
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _city of assignedCitys">
+
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _city.cityname }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--dashed"></div>
+                
+            </div>
+          
+            <div class="kt-portlet__foot kt-portlet__foot--fit kt-portlet__no-border">
+                <div class="kt-form__actions kt-form__actions--solid">
+                    <div class="row text-right">
+                        <div class="col-lg-12">
+                            <button type="button" mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial matTooltip="Cancel changes">
+                                Cancel
+                            </button>&nbsp;
+                            <button type="button" [disabled]="!isTitleValid() || Company.isCore" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="viewLoading" matTooltip="Save changes">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

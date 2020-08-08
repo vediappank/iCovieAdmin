@@ -1,0 +1,616 @@
+<kt-portlet style="height: 600px;">
+    <kt-portlet-header [title]="getTitle()" >
+        <ng-container ktPortletTools>
+
+
+            <a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                mat-raised-button matTooltip="Save & Continue">
+                <span class="kt-hidden-mobile">Save</span>
+            </a>
+
+        </ng-container>
+    </kt-portlet-header>
+
+    <kt-portlet-body >
+        <mat-tab-group>
+            <div *ngIf="Property">
+                <div class="kt-form">
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Basic info
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <!--begin::Form-->
+                            <div class="kt-portlet__body">
+                                <div class="kt-portlet__body-progress">
+                                    <mat-spinner [diameter]="20"></mat-spinner>
+                                </div>
+
+                                <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true"
+                                    (close)="onAlertClose($event)">
+                                    Oh snap! Change a few things up and try submitting again.
+                                </kt-alert>
+
+                                <div class="kt-form__section kt-form__section--first">
+                                    <div class="form-group kt-form__group row">
+                                        <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <input matInput placeholder="Enter Property Name"
+                                                    [(ngModel)]="Property.propertyname" />
+
+                                                <mat-hint align="start">Please enter
+                                                    <strong>Property</strong>
+                                                </mat-hint>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group kt-form__group row">
+                                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <mat-select placeholder="Select Building"
+                                                    [(ngModel)]="BuildingIdForAdding"
+                                                    (selectionChange)="getFloorByBuilding()">
+
+                                                    <mat-option *ngFor="let Building of filteredBuildings"
+                                                        [value]="Building.id">
+                                                        {{Building.buildingname}}</mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <mat-select placeholder="Select Floor" [(ngModel)]="FloorIdForAdding"
+                                                    (selectionChange)="getWingByFloor()">
+                                                    <mat-option *ngFor="let Floor of filteredFloors" [value]="Floor.id">
+                                                        {{Floor.floorname}}</mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group kt-form__group row">
+
+                                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <mat-select placeholder="Select Units" [(ngModel)]="UnitsIdForAdding"
+                                                    (selectionChange)="getWingTypeByWing()">
+                                                    <mat-option *ngFor="let Units of filteredUnits" [value]="Units.id">
+                                                        {{Units.unitsname}}</mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <mat-select placeholder="Select UnitsType"
+                                                    [(ngModel)]="UnitsTypeIdForAdding" multiple>
+                                                    <mat-option *ngFor="let  unitstype of allSelectedUnitsType"
+                                                        [value]="unitstype">
+                                                        {{unitstype.unitstype}}</mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+                                        </div>
+
+
+                                    </div>
+                                    <!-- <div class="form-group kt-form__group row">
+                                       
+                                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <input matInput placeholder="Enter Sqft" [(ngModel)]="Property.sqft" />
+
+                                                <mat-hint align="start">Please enter
+                                                    <strong>Sqft</strong>
+                                                </mat-hint>
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div> -->
+
+                                    <!-- <div class="form-group kt-form__group row">
+                                       <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <input matInput placeholder="Enter Cost" [(ngModel)]="Property.cost" />
+
+                                                <mat-hint align="start">Please enter
+                                                    <strong>Cost</strong>
+                                                </mat-hint>
+                                            </mat-form-field>
+                                        </div> 
+                                       
+
+                                    </div>-->
+
+                                    <div class="form-group kt-form__group row">
+                                        <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <textarea matInput placeholder="Enter Description"
+                                                    [(ngModel)]="Property.description"></textarea>
+
+                                                <mat-hint align="start">Please enter
+                                                    <strong>Description</strong>
+                                                </mat-hint>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <!-- 
+                                        <div class="col-lg-5 kt-margin-bottom-20-mobile">
+                                            <mat-form-field class="mat-form-field-fluid">
+                                                <input matInput placeholder="Enter Coordinates"
+                                                    [(ngModel)]="Property.coordinates" />
+
+                                                <mat-hint align="start">Please enter
+                                                    <strong>Coordinates</strong>
+                                                </mat-hint>
+                                            </mat-form-field>
+                                        </div> -->
+                                    </div>
+
+
+                                </div>
+                                <div class="kt-separator kt-separator--dashed"></div>
+
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Address
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <div class="form-group kt-form__group row">
+                                <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <textarea matInput placeholder="Enter Address"
+                                            [(ngModel)]="Property.address"></textarea>
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Address</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group kt-form__group row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput placeholder="Enter Pincode" [(ngModel)]="Property.pincode" />
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Pincode</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+
+
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput placeholder="Enter Phone No1" [(ngModel)]="Property.phoneno1" />
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Phone No1</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group kt-form__group row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput placeholder="Enter Phone No2" [(ngModel)]="Property.phoneno2" />
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Phone No2</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput placeholder="Enter Phone No3" [(ngModel)]="Property.phoneno3" />
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Phone No3</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Managers / Users
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <div class="form-group kt-form__group row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="Select Community Role Manager"
+                                            [(ngModel)]="CommunityRoleIdForAdding"
+                                            (selectionChange)="getCommunityUserByCommunityRole()">
+                                            <mat-option *ngFor="let CommunityRole of allCommunityRole"
+                                                [value]="CommunityRole.id">
+                                                {{CommunityRole.RoleName}}</mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="Select Community User"
+                                            [(ngModel)]="CommunityUserIdForAdding">
+                                            <mat-option *ngFor="let CommunityUser of filteredCommunityUser"
+                                                [value]="CommunityUser.id">
+                                                {{CommunityUser.firstname}}</mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group kt-form__group row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="Select Select Facility Role Manager"
+                                            [(ngModel)]="FacilityRoleIdForAdding"
+                                            (selectionChange)="getFacilityUserByFacilityRole()">
+                                            <mat-option *ngFor="let FacilityRole of allFacilityRole"
+                                                [value]="FacilityRole.id">
+                                                {{FacilityRole.RoleName}}</mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <mat-select placeholder="Select Select Facility Users"
+                                            [(ngModel)]="FacilityUserIdForAdding">
+                                            <mat-option *ngFor="let FacilityUser of filteredFacilityUser"
+                                                [value]="FacilityUser.id">
+                                                {{FacilityUser.firstname}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Pricing
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <div class="form-group kt-form__group row">
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput placeholder="Enter Pricing" [(ngModel)]="Property.pricing" />
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Pricing</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+
+
+                                <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                    <mat-form-field class="mat-form-field-fluid">
+                                        <input matInput placeholder="Enter Discount Pricing"
+                                            [(ngModel)]="Property.discountpricing" />
+
+                                        <mat-hint align="start">Please enter
+                                            <strong>Discount Pricing</strong>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Amenities
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <!-- <div *ngIf="PropertyID > 0; else AminitieselseBlock;"> -->
+                            <mat-accordion class="example-headers-align"
+                                *ngFor="let mmc1 of aminitiesCollection; index as ii3">
+                                <mat-expansion-panel [expanded]="true" hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <mat-icon color="primary">account_circle</mat-icon><b>
+                                                {{mmc1.aminities | uppercase}}</b>
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel-header>
+
+                                    <div *ngIf="aminitiesTypeCollection" class="row">
+                                        <div *ngFor="let pvc1 of getAllAminitiesTypebyAID(mmc1.id); index as kk"
+                                            class="col-lg-4">
+
+                                            <mat-checkbox class="example-margin" (change)="onChange($event, pvc1)"
+                                                [checked]="VaildateAminitiesType(mmc1.id, pvc1.id)">
+                                                {{pvc1.aminitiestype | titlecase}}
+                                            </mat-checkbox>
+                                        </div>
+
+                                    </div>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                            <!-- </div> -->
+                            <!-- Edit Section for Aminities -->
+                            <ng-template #AminitieselseBlock>
+                                <mat-accordion class="example-headers-align"
+                                    *ngFor="let mmc4 of aminitiesCollection; index as i4">
+                                    <mat-expansion-panel [expanded]="true" hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <mat-icon color="primary">account_circle</mat-icon><b>
+                                                    {{mmc4.aminities | uppercase}}</b>
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+
+                                        <!--Sub Menu Privillage Configuration-->
+                                        <div *ngIf="aminitiesTypeCollection" class="row">
+                                            <div *ngFor="let pvc4 of getAllAminitiesTypebyAID(mmc4.id); index as k4"
+                                                class="col-lg-4">
+
+                                                <mat-checkbox class="example-margin margin"
+                                                    (change)="onChange($event, pvc4)">
+                                                    {{pvc4.aminitiestype | titlecase}}
+                                                </mat-checkbox>
+
+                                            </div>
+
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+                            </ng-template>
+                            <!-- This is for Expand and -->
+
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Images
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <input type='file' (change)="onSelectFile($event)" multiple>
+                            <div class="row" *ngIf="data.id > 0">
+                                <mat-card class="example-card col-lg-4 pt-2  mt-4  pr-4"
+                                    *ngFor='let url of editselectedImagesList'>
+                                    <img mat-card-image src="{{url.showimagepath}}" alt="" height="300">
+                                    <mat-card-actions>
+                                        <button mat-button (click)="deleteImages($event,url)" color="warn">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                            <div class="row">
+                                <mat-card class="example-card col-lg-4 pt-2  mt-4  pr-4" *ngFor='let url of urls'>
+
+                                    <img mat-card-image [src]="url" alt="" height="300">
+                                    <!-- <mat-card-actions>
+                                        <button mat-button (click)="uploaddeleteImages($event,url)" color="warn"><mat-icon>delete</mat-icon>  </button> 
+                                                         
+                                        
+                                      </mat-card-actions> -->
+                                </mat-card>
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+                    <!-- property setup tab -->
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Property Setup
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <div class="kt-form__section kt-form__section--first">
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Bed Type" [(ngModel)]="BedtypesIdForAdding">
+                                                <mat-option *ngFor="let bedtype of allBedtype" [value]="bedtype.id">
+                                                    {{bedtype.bedtype}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Business Category"
+                                                [(ngModel)]="BusinesscategorysIdForAdding">
+                                                <mat-option *ngFor="let businesscategory of allBusinesscategory"
+                                                    [value]="businesscategory.id">
+                                                    {{businesscategory.businesscategory}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Guest Type"
+                                                [(ngModel)]="GuesttypesIdForAdding">
+                                                <mat-option *ngFor="let Guesttype of allGuesttype"
+                                                    [value]="Guesttype.id">
+                                                    {{Guesttype.guesttype}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Property Category"
+                                                [(ngModel)]="PropertycategoryIdForAdding">
+                                                <mat-option *ngFor="let Propertycategory of allPropertycategory"
+                                                    [value]="Propertycategory.id">
+                                                    {{Propertycategory.propertycategory}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Property Type"
+                                                [(ngModel)]="PropertytypeIdForAdding">
+                                                <mat-option *ngFor="let propertytype of allPropertytype"
+                                                    [value]="propertytype.id">
+                                                    {{propertytype.propertytype}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+
+                              
+
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+
+                                            <input matInput [matDatepicker]="picker"
+                                                placeholder="Choose Year build date" [(ngModel)]="Property.yearbuild" />
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                            <mat-hint align="start">Please Choose
+                                                <strong>Year Built</strong>
+                                            </mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group kt-form__group row">
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <mat-select placeholder="Select Gender" [(ngModel)]="GenderIdForAdding">
+                                                <mat-option *ngFor="let gender of allGender" [value]="gender.id">
+                                                    {{gender.gender}}</mat-option>
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+
+                               
+                                    <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                                        <mat-form-field class="mat-form-field-fluid">
+                                            <input matInput placeholder="Enter Property Video"
+                                                [(ngModel)]="Property.propertyvideo" />
+
+                                            <mat-hint align="start">Please enter
+                                                <strong>Property Video</strong>
+                                            </mat-hint>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-user"></i>
+                            Neighbours
+                        </ng-template>
+                        <ng-template matTabContent>
+                            <div>
+                                <mat-accordion class="example-headers-align"
+                                    *ngFor="let mmca1 of neighbourcategoryCollection; index as a1">
+                                    <mat-expansion-panel [expanded]="true" hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <mat-icon color="primary">account_circle</mat-icon><b>
+                                                    {{mmca1.neighbourhoodcategory | uppercase}}</b>
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+
+                                        <!--Sub Menu Privillage Configuration-->
+                                        <div *ngIf="neighbourTypeCollection;" class="row">
+                                            <div *ngFor="let pvcb1 of getAllNeighbourTypeCollectionbyAID(mmca1.id); index as b1"
+                                                class="col-lg-4">
+
+                                                <mat-checkbox class="example-margin col-lg-2"
+                                                    (change)="onNeighbourChange($event, pvcb1)"
+                                                    [checked]="VaildateNeighbourType(mmca1.id, pvcb1.id)">
+                                                    {{pvcb1.neighbourhoodtype | titlecase}}
+                                                </mat-checkbox>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                            </div>
+                            <!-- Edit Section for Aminities -->
+                            <ng-template #AminitieselseBlock>
+                                <mat-accordion class="example-headers-align"
+                                    *ngFor="let mmcc1 of neighbourcategoryCollection; index as c1">
+                                    <mat-expansion-panel [expanded]="true" hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <mat-icon color="primary">account_circle</mat-icon><b>
+                                                    {{mmcc1.neighbourhoodcategory | uppercase}}</b>
+                                            </mat-panel-title>
+
+                                        </mat-expansion-panel-header>
+
+                                        <!--Sub Menu Privillage Configuration-->
+                                        <div *ngIf="neighbourTypeCollection" class="row">
+                                            <div *ngFor="let pvcd1 of getAllNeighbourTypeCollectionbyAID(mmcc1.id); index as d1"
+                                                class="col-lg-4">
+
+                                                <mat-checkbox class="example-margin"
+                                                    (change)="onNeighbourChange($event, pvcd1)">
+                                                    {{pvcd1.neighbourhoodtype | titlecase}}
+                                                </mat-checkbox>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+                            </ng-template>
+                            <!-- This is for Expand and -->
+
+                        </ng-template>
+                    </mat-tab>
+
+                    <!--property setup end  -->
+                </div>
+            </div>
+        </mat-tab-group>
+
+    </kt-portlet-body>
+</kt-portlet>

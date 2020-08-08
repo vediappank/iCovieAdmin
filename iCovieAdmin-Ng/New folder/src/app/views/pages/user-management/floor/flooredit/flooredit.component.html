@@ -1,0 +1,168 @@
+
+<div class="kt-portlet" [ngClass]="{ 'kt-portlet--body-progress' : viewLoading,
+ 'kt-portlet--body-progress-overlay' : loadingAfterSubmit }" style="width: 1000px;">
+    <div class="kt-portlet__head kt-portlet__head__custom" *ngIf="Floor">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">{{getTitle()}}</h3>
+        </div>
+    </div>
+    <div *ngIf="Floor">
+        <div class="kt-form" >
+            <div class="kt-portlet__body">
+
+                <div class="kt-portlet__body-progress">
+                    <mat-spinner [diameter]="20"></mat-spinner>
+                </div>
+
+                <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true" (close)="onAlertClose($event)">
+                    Oh snap! Change a few things up and try submitting again.
+                </kt-alert>
+
+                <div class="kt-form__section kt-form__section--first">
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select Company" [(ngModel)]="CompanyIdForAdding" (selectionChange)="getLocationByCompany()">
+                                    <mat-option *ngFor="let Company of unassignedCompanys" value="{{ Company.id }}" >
+                                        {{Company.companyname}}</mat-option>
+                                </mat-select>
+                                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select Location" [(ngModel)]="LocationIdForAdding" (selectionChange)="getBuildingByLocation()">
+                                    <mat-option *ngFor="let Location of unassignedLocations" value="{{ Location.id }}">
+                                        {{Location.locationname}}</mat-option>
+                                </mat-select>
+                                
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-group kt-form__group row">
+                       
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned Company
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _Company of assignedCompanys">
+
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _Company.companyname }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned Location
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _Location of assignedLocations">
+
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _Location.locationname }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select Building" [(ngModel)]="BuildingIdForAdding">
+                                    <mat-option *ngFor="let Building of unassignedBuildings" value="{{ Building.id }}">
+                                        {{Building.buildingname}}</mat-option>
+                                </mat-select>
+                                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned Building
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _Building of assignedBuildings">
+
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _Building.buildingname }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput                                     
+                                    placeholder="Enter Floor"  
+                                    [(ngModel)]="Floor.floorname" />
+                             
+                                <mat-hint align="start">Please enter
+                                    <strong>Floor</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput                                     
+                                    placeholder="Enter Floor Short Name"  
+                                    [(ngModel)]="Floor.shortname" />
+                              
+                                <mat-hint align="start">Please enter
+                                    <strong>ShortName</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                     
+                    </div>
+                    
+                </div>
+                <div class="kt-separator kt-separator--dashed"></div>
+                
+            </div>
+          
+            <div class="kt-portlet__foot kt-portlet__foot--fit kt-portlet__no-border">
+                <div class="kt-form__actions kt-form__actions--solid">
+                    <div class="row text-right">
+                        <div class="col-lg-12">
+                            <button type="button" mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial matTooltip="Cancel changes">
+                                Cancel
+                            </button>&nbsp;
+                            <button type="button" [disabled]="!isTitleValid() || Floor.isCore" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="viewLoading" matTooltip="Save changes">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

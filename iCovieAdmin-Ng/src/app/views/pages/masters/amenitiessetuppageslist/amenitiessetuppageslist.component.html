@@ -1,0 +1,37 @@
+<kt-portlet>
+	<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'" [viewLoading$]="loading$">
+		
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+		<mat-tab-group >
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Amenities Category
+				</ng-template>
+				<ng-template matTabContent>
+					<div style="height: 850px;" >
+                  <kt-aminitieslist></kt-aminitieslist>                    
+                    </div>
+                    
+				</ng-template>
+			</mat-tab>
+			<!-- <mat-tab *ngIf="user" [disabled]="!user || !user.id"> -->
+				
+			<mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-cogs"></i>
+					Amenities Type
+				</ng-template>
+				<ng-template matTabContent>
+                    <div style="height: 850px;" >
+                    <kt-aminitiestypelist></kt-aminitiestypelist>
+                </div>
+				</ng-template>
+			</mat-tab>
+
+			
+		</mat-tab-group>
+	</kt-portlet-body>
+</kt-portlet>

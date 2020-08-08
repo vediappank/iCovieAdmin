@@ -1,0 +1,53 @@
+.mainmenu {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #48465b
+}
+
+.submenu {
+  color: #48465b;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+justify-content: space-between;
+align-items: center;
+}
+
+mat-form-field {
+margin-right: 12px;
+}
+
+.example-h2 {
+margin: 10px;
+}
+
+.example-section {
+display: flex;
+align-content: center;
+align-items: center;
+height: 60px;
+}
+
+.example-margin {
+margin: 0 10px;
+}
+
+.mat {
+word-wrap: break-word !important; 
+height: 500px;
+overflow-y: scroll;
+margin-top: 10px;
+}

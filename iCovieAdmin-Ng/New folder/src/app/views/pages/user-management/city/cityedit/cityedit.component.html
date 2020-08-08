@@ -1,0 +1,217 @@
+<div class="kt-portlet"
+    [ngClass]="{ 'kt-portlet--body-progress' : viewLoading, 'kt-portlet--body-progress-overlay' : loadingAfterSubmit }"
+    style="width: 1000px;">
+    <div class="kt-portlet__head kt-portlet__head__custom" *ngIf="City">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">{{getTitle()}}</h3>
+        </div>
+    </div>
+    <div *ngIf="City">
+        <div class="kt-form">
+            <div class="kt-portlet__body">
+                <input type="hidden" [(ngModel)]="City.stateid" />
+                <input type="hidden" [(ngModel)]="City.countryid" />
+                <div class="kt-portlet__body-progress">
+                    <mat-spinner [diameter]="20"></mat-spinner>
+                </div>
+
+                <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true"
+                    (close)="onAlertClose($event)">
+                    Oh snap! Change a few things up and try submitting again.
+                </kt-alert>
+
+                <div class="kt-form__section kt-form__section--first">
+
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select Company" [(ngModel)]="CompanyIdForAdding"
+                                    (selectionChange)="getCountryByCompany()">
+                                    <mat-option *ngFor="let Company of unassignedCompanys" value="{{ Company.id }}">
+                                        {{Company.companyname}}</mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select country" [(ngModel)]="countryIdForAdding"
+                                    (selectionChange)="getstateBycountry()">
+                                    <mat-option *ngFor="let country of unassignedcountrys" value="{{ country.id }}">
+                                        {{country.countryname}}</mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned Company
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _comapnay of assignedCompanys">
+
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _comapnay.companyname }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned country
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _country of assignedcountrys">
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _country.countryname }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select state" [(ngModel)]="stateIdForAdding">
+                                    <mat-option *ngFor="let state of unassignedstates" value="{{ state.id }}">
+                                        {{state.statename}}</mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <mat-select placeholder="Select timezone" [(ngModel)]="timezoneIdForAdding">
+                                    <mat-option *ngFor="let timezone of unassignedtimezones" value="{{ timezone.id }}">
+                                        {{timezone.timezone}}</mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned state
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _state of assignedstates">
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _state.statename }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <div class="form-group kt-form__group row" style="padding-left: 10px;">
+                                <div class="kt-margin-bottom-20-mobile">
+                                    <div class="kt-list-timeline kt-list-timeline--user-role">
+                                        <h6 class="kt-section__heading">
+                                            Assigned timezone
+                                        </h6>
+                                        <div class="kt-list-timeline__items">
+                                            <div class="kt-list-timeline__item m-0 p-0"
+                                                *ngFor="let _timezone of assignedtimezones">
+                                                <span
+                                                    class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
+                                                <span class="kt-list-timeline__text">{{ _timezone.timezone }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Enter City" [(ngModel)]="City.cityname" />
+
+                                <mat-hint align="start">Please enter
+                                    <strong>City</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Enter City Short Name" [(ngModel)]="City.shortname" />
+
+                                <mat-hint align="start">Please enter
+                                    <strong>ShortName</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div class="form-group kt-form__group row">
+                        <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                            <input type='file' (change)="onSelectFile($event)" multiple>
+                        </div>
+                        <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                            <div class="row" *ngIf="data.id > 0">
+                                <mat-card class="example-card col-lg-4 ml-1 pt-2  mt-4  pr-4"
+                                  >
+                                    <img mat-card-image src={{City.showimagepath}} alt="" height="400" width="800">
+                                    
+                                </mat-card>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <mat-card class="example-card col-lg-4 ml-1 pt-2  mt-4  pr-4" *ngFor='let url of urls'>
+                                <img mat-card-image [src]="url" alt="" height="400" width="800">
+                            </mat-card>
+                        </div>
+
+                    </div>
+                    <div class="kt-separator kt-separator--dashed"></div>
+
+                </div>
+
+                <div class="kt-portlet__foot kt-portlet__foot--fit kt-portlet__no-border">
+                    <div class="kt-form__actions kt-form__actions--solid">
+                        <div class="row text-right">
+                            <div class="col-lg-12">
+                                <button type="button" mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial
+                                    matTooltip="Cancel changes">
+                                    Cancel
+                                </button>&nbsp;
+                                <button type="button" [disabled]="!isTitleValid() || City.isCore" mat-raised-button
+                                    color="primary" (click)="onSubmit()" [disabled]="viewLoading"
+                                    matTooltip="Save changes">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

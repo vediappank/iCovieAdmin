@@ -1,0 +1,25 @@
+.fa-cogs {
+    color:#000;
+    font-weight: bold;
+    
+  }
+
+  ::ng-deep .mat-tab-label-content
+  {
+      font-weight: bold;
+  }
+
+  ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color:black;
+    border-radius: 5px solid white;
+    background-color:  #FEB300;	
+    font-weight: bold;
+    border-radius: 5px;
+    }
+    
+    ::ng-deep .mat-tab-list .mat-tab-labels {
+    color:white;
+    
+    //background-color:  #FEB300;	
+    font-weight: bold !important;
+    }

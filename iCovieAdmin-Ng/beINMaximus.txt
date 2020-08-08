@@ -1,0 +1,68 @@
+				-------------------------beINMaximus------------------
+Download NodeJS ZIP file and extract.
+Set path to NodeJS extracted folder.
+
+Install Angular (ng), using below command.
+	npm i -g @angular/cli
+
+Verify Angular version, using below command.
+	ng --version
+
+---------------------------------------------------------------------------------------------------------------------
+Angular Project Creation
+https://appdividend.com/2019/06/04/angular-8-tutorial-with-example-learn-angular-8-crud-from-scratch/
+---------------------------------------------------------------------------------------------------------------------
+Create new angular project, using below command.
+	ng new beINMaximus
+Go inside the project folder.
+	cd beINMaximus
+Install Bootstrap in local project folder (if no --save is given, then it will install in local folder, so --save is optional)
+	npm install bootstrap
+	npm install --save @ng-bootstrap/ng-bootstrap
+Install chart, using below command.
+	npm install chart.js --save
+Install ng2-charts, using below command.
+	npm install ng2-charts --save
+Install amcharts, using below command.
+	npm install @amcharts/amcharts4 --save
+Install Angular Material components, using below command.
+	npm install --save @angular/material @angular/cdk @angular/animations
+	
+
+Angular Datatables
+npm install jquery --save
+npm install datatables.net --save
+npm install datatables.net-dt --save
+npm install angular-datatables --save
+npm install @types/jquery --save-dev
+npm install @types/datatables.net --save-dev
+npm install jszip --save
+npm install datatables.net-buttons --save
+npm install datatables.net-buttons-dt --save
+npm install @types/datatables.net-buttons --save-dev
+
+npm install --save @ngx-translate/core @ngx-translate/http-loader
+
+---------------------------------------------------------------------------------------------------------------------
+Modules Creation
+---------------------------------------------------------------------------------------------------------------------
+ng g module Maximus-Login/MaximusLogin  --module app --flat --routing
+
+
+---------------------------------------------------------------------------------------------------------------------
+Components Creation
+---------------------------------------------------------------------------------------------------------------------
+ng g c Maximus-Login/App-Login --skipTests=true --module ./Maximus-Login/Maximus-Login.module.ts
+ng g c Maximus-Login/App-ChangePassword --skipTests=true --module ./Maximus-Login/Maximus-Login.module.ts
+
+
+-----Meeting module Creation-------
+ng g c meeting --module pages
+
+
+
+ng serve --proxy-config proxy.conf.json
+
+ng build --base-href "/beINInsight/" --prod
+npm run-script build-prod
+ng build --base-href "/beINInsight/" --prod --verbose=true

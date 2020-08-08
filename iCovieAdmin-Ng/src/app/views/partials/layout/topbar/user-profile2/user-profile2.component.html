@@ -1,0 +1,154 @@
+<!-- <div ngbDropdown placement="bottom-right" *ngIf="luser" class="kt-header__topbar-item kt-header__topbar-item--user"> -->
+	<!-- *ngIf="luser.length >0" c -->
+<div ngbDropdown placement="bottom-right" *ngIf="luser" class="kt-header__topbar-item kt-header__topbar-item--user">
+	<div class="row" *ngIf="currentURL != 'user-management'">
+
+		<div class="col-lg-6 kt-margin-bottom-20-mobile p-3">
+			<mat-form-field class="mat-form-field-fluid">
+				<mat-select placeholder="Select Company" (selectionChange)="onChangeComapny()"
+					[(value)]="selectedCompany">
+					<mat-option *ngFor="let orderby of defaultCompanys" value="{{ orderby.id }}">
+						{{orderby.companyname}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div class="col-lg-6 kt-margin-bottom-20-mobile p-3">
+			<mat-form-field class="mat-form-field-fluid">
+				<mat-select placeholder="Select Location" (selectionChange)="onChangeLocation()"
+					[(value)]="selectedLocation">
+					<mat-option *ngFor="let orderby of filterLocations" value="{{ orderby.id }}">
+						{{orderby.locationname}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		
+	</div>
+	<div ngbDropdownToggle class="kt-header__topbar-wrapper">
+
+		<span class="kt-header__topbar-username" style="color:#FEB300; display: block; font-size: 1rem;		
+		padding-bottom: 0.5rem;
+		font-weight: 500;
+		font-family:inherit;
+		display: block;">
+			<div> {{luser.lastname |uppercase}} {{luser.firstname |uppercase}} </div>
+			<div style="float: right; "> {{luser.username}}</div>
+		</span>
+
+		<!-- <img *ngIf="avatar" alt="Pic" [attr.src]="luser.pic"> -->
+		<img alt="Pic" src="{{profileImg}}" />
+	</div>
+	<div ngbDropdownMenu
+		class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+		<!--begin: Head -->
+		<div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
+			style="background-image: url(./assets/media/misc/bg-1.jpg)">
+			<div class="kt-user-card__avatar">
+				<!-- <img alt="Pic" [attr.src]="luser.pic"/> -->
+				 <img alt="Pic" src={{profileImg}} /> 
+				<!-- <span  class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">
+					test123
+				</span> -->
+			</div>
+			<div class="kt-user-card__name">
+			{{fullname}}
+			</div>
+		 <div class="kt-user-card__badge">
+				<span class="btn btn-success btn-sm btn-bold btn-font-md">{{role_name}}</span>
+			</div> 
+		</div>
+		<!--end: Head -->
+
+		<!--begin: Navigation -->
+		<div class="kt-notification">
+			<a (click)="pageredirect()" class="kt-notification__item">
+				<div class="kt-notification__item-icon">
+					<i class="flaticon2-calendar-3 kt-font-success"></i>
+				</div>
+				<div class="kt-notification__item-details">
+					<div class="kt-notification__item-title kt-font-bold">
+						My Profile
+					</div>
+					<div class="kt-notification__item-time">
+						Read Account Settings
+					</div>
+				</div>
+			</a>
+			<!-- <a routerLink="profile" href="javascript:;" class="kt-notification__item">
+				<div class="kt-notification__item-icon">
+					<i class="flaticon2-mail kt-font-warning"></i>
+				</div>
+				<div class="kt-notification__item-details">
+					<div class="kt-notification__item-title kt-font-bold">
+						My Messages
+					</div>
+					<div class="kt-notification__item-time">
+						Inbox and tasks
+					</div>
+				</div>
+			</a>
+			<a routerLink="profile" href="javascript:;" class="kt-notification__item">
+				<div class="kt-notification__item-icon">
+					<i class="flaticon2-rocket-1 kt-font-danger"></i>
+				</div>
+				<div class="kt-notification__item-details">
+					<div class="kt-notification__item-title kt-font-bold">
+						My Activities
+					</div>
+					<div class="kt-notification__item-time">
+						Logs and notifications
+					</div>
+				</div>
+			</a>
+			<a routerLink="profile" href="javascript:;" class="kt-notification__item">
+				<div class="kt-notification__item-icon">
+					<i class="flaticon2-hourglass kt-font-brand"></i>
+				</div>
+				<div class="kt-notification__item-details">
+					<div class="kt-notification__item-title kt-font-bold">
+						My Tasks
+					</div>
+					<div class="kt-notification__item-time">
+						latest tasks and projects
+					</div>
+				</div>
+			</a> -->
+			<div class="kt-notification__custom">
+				<a href="javascript:;" (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">Sign
+					Out</a>
+			</div>
+		</div>
+		<!--end: Navigation -->
+
+		<!--begin: Navigation(alternative) -->
+		<ul class="kt-nav kt-margin-b-10 kt-hidden">
+			<li class="kt-nav__item">
+				<a routerLink="profile" class="kt-nav__link">
+					<span class="kt-nav__link-icon"><i class="flaticon2-calendar-3"></i></span>
+					<span class="kt-nav__link-text">My Profile</span>
+				</a>
+			</li>
+			<li class="kt-nav__item">
+				<a routerLink="profile" class="kt-nav__link">
+					<span class="kt-nav__link-icon"><i class="flaticon2-browser-2"></i></span>
+					<span class="kt-nav__link-text">My Tasks</span>
+				</a>
+			</li>
+			<li class="kt-nav__item">
+				<a routerLink="profile" class="kt-nav__link">
+					<span class="kt-nav__link-icon"><i class="flaticon2-mail"></i></span>
+					<span class="kt-nav__link-text">Messages</span>
+				</a>
+			</li>
+			<li class="kt-nav__item">
+				<a routerLink="profile" class="kt-nav__link">
+					<span class="kt-nav__link-icon"><i class="flaticon2-gear"></i></span>
+					<span class="kt-nav__link-text">Settings</span>
+				</a>
+			</li>
+			<li class="kt-nav__item kt-nav__item--custom kt-margin-t-15">
+				<a (click)="logout()" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a>
+			</li>
+		</ul>
+		<!--end: Navigation(alternative) -->
+	</div>
+</div>
