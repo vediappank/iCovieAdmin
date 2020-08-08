@@ -146,10 +146,9 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 			//alert(this.role.isCoreRole);
 		});
 
-		this.auth.GetALLCompany().subscribe((_users: MCompanyModel[]) => {			
-				this.allCompanys= _users;
-				this.filteredCompanys= _users;
-			
+		this.auth.GetALLCompany().subscribe((_company: MCompanyModel[]) => {			
+				this.allCompanys= _company;
+				this.filteredCompanys= _company;			
 			if (this.issuperadmin == "True") {
 				this.allCompanys = this.allCompanys;
 				this.filteredCompanys = this.allCompanys;
@@ -158,14 +157,10 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 				this.allCompanys = this.allCompanys.filter(row => row.id == this.CompanyID)
 				this.filteredCompanys = this.allCompanys.filter(row => row.id == this.CompanyID);
 			}
-			this.getLocationByCompany();
-			
+			this.getLocation(this.filteredCompanys[0].id);			
 		});
 
-		this.auth.GetALLLocation().subscribe((_location: MLocationModel[]) => {		
-				this.allLocations= _location;
-				this.filteredLocations= _location;
-		});
+		
 	}
 	/**
 	 * On destroy
@@ -174,6 +169,14 @@ export class RoleEditDialogComponent implements OnInit, OnDestroy {
 		if (this.componentSubscriptions) {
 			this.componentSubscriptions.unsubscribe();
 		}
+	}
+
+	getLocation(compnayid:number)
+	{
+		this.auth.GetALLLocation().subscribe((_location: MLocationModel[]) => {		
+			this.allLocations= _location;
+			this.filteredLocations= _location.filter(row=>row.companyid == compnayid);
+	});
 	}
 
 	//Load MainMenu

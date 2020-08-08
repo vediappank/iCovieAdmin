@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace iCovieApi.Models.Master
+namespace iCovieApi.Models
 {
     public class GenderModel
     {

@@ -1,4 +1,4 @@
-﻿using iCovieApi.Models.Master;
+﻿using iCovieApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

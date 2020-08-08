@@ -51,19 +51,19 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
 
 	allcountrys: MCountryModel[] = [];
-	unassignedcountrys: MCountryModel[] = [];
+	filteredcountrys: MCountryModel[] = [];
 	assignedcountrys: MCountryModel[] = [];
 	countryIdForAdding: number;
 	countrysSubject = new BehaviorSubject<number[]>([]);
 
 	allstates: MStateModel[] = [];
-	unassignedstates: MStateModel[] = [];
+	filteredstates: MStateModel[] = [];
 	assignedstates: MStateModel[] = [];
 	stateIdForAdding: number;
 	statesSubject = new BehaviorSubject<number[]>([]);
 
 	allcitys: MCityModel[] = [];
-	unassignedcitys: MCityModel[] = [];
+	filteredcitys: MCityModel[] = [];
 	assignedcitys: MCityModel[] = [];
 	cityIdForAdding: number;
 	citysSubject = new BehaviorSubject<number[]>([]);
@@ -105,14 +105,14 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	LocationIdForAdding: number;
 	allAgentSupervisor$: Observable<User[]>;
 	allSupervisor: User[] = [];
-	unassignedSupervisor: User[] = [];
+	filteredSupervisor: User[] = [];
 	assignedSupervisor: User[] = [];
 	allCompany: any[] = [];
-	unassignedCompany: any[] = [];
+	filteredCompany: any[] = [];
 	assignedCompany: any[] = [];
 
 	allLocation: any[] = [];
-	unassignedLocation: any[] = [];
+	filteredLocation: any[] = [];
 	assignedLocation: any[] = [];
 
 	myControl = new FormControl();
@@ -134,7 +134,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	// Roles
 	allUserRoles$: Observable<Role[]>;
 	allRoles: Role[] = [];
-	unassignedRoles: Role[] = [];
+	filteredRoles: Role[] = [];
 	assignedRoles: Role[] = [];
 	roleIdForAdding: number;
 	selectedCompany: any;
@@ -209,39 +209,13 @@ export class UserEditComponent implements OnInit, OnDestroy {
 			const id = params['id'];
 			if (id && id > 0) {
 				this.store.pipe(select(selectUserById(Number(id)))).subscribe(res => {
-					debugger;
+
 					if (res) {
 						this.user = res;
-						//this.rolesSubject.next(this.user.userroleid);
-						//this.CompanySubject.next(this.user.usercompanyid);
-						//this.LocationSubject.next(this.user.userlocationid);
-						let x = [];
-debugger;
-						x[0] = this.user.countryid;
-						x[1] = this.user.stateid;
-						x[2] = this.user.cityid;
 
-						this.rolesSubject.next(this.user.userroleid);
-						this.CompanySubject.next(this.user.usercompanyid);
-						this.LocationSubject.next(this.user.userlocationid);
-
-						this.countrysSubject.next(x[0]);
-						if (x[0] != undefined)
-							this.countryIdForAdding = Number(x[0].toString());
-						else
-							this.countryIdForAdding = 0;
-
-						this.statesSubject.next(x[1]);
-						if (x[1] != undefined)
-							this.stateIdForAdding = Number(x[1].toString());
-						else
-							this.stateIdForAdding = 0;
-
-						this.citysSubject.next(x[2]);
-						if (x[2] != undefined)
-							this.cityIdForAdding = Number(x[2].toString());
-						else
-							this.cityIdForAdding = 0;
+						this.countryIdForAdding = Number(this.user.countryid);
+						this.stateIdForAdding = Number(this.user.stateid);
+						this.cityIdForAdding = Number(this.user.cityid);
 
 						this.oldUser = Object.assign({}, this.user);
 						this.CompanyIdForAdding = Number(this.user.usercompanyid.toString());
@@ -254,32 +228,15 @@ debugger;
 			} else {
 				this.user = new User();
 				this.user.clear();
-				let x = [];
+				this.countryIdForAdding = Number(this.user.countryid);
+				this.stateIdForAdding = Number(this.user.stateid);
+				this.cityIdForAdding = Number(this.user.cityid);
 
-				x[0] = this.user.countryid;
-				x[1] = this.user.stateid;
-				x[2] = this.user.cityid;
-
-				this.rolesSubject.next(this.user.userroleid);
-				this.CompanySubject.next(this.user.usercompanyid);
-				this.LocationSubject.next(this.user.userlocationid);
-
-				if (x[0] != undefined)
-					this.countryIdForAdding = Number(x[0].toString());
-				else
-					this.countryIdForAdding = 0;
-
-				this.statesSubject.next(x[1]);
-				if (x[1] != undefined)
-					this.stateIdForAdding = Number(x[1].toString());
-				else
-					this.stateIdForAdding = 0;
-
-				this.citysSubject.next(x[2]);
-				if (x[1] != undefined)
-					this.cityIdForAdding = Number(x[2].toString());
-				else
-					this.cityIdForAdding = 0;
+				this.oldUser = Object.assign({}, this.user);
+				this.CompanyIdForAdding = Number(this.user.usercompanyid.toString());
+				this.LocationIdForAdding = Number(this.user.userlocationid.toString());
+				this.roleIdForAdding = Number(this.user.userroleid.toString());
+				this.initUser();
 
 				this.oldUser = Object.assign({}, this.user);
 				this.initUser();
@@ -291,205 +248,41 @@ debugger;
 		//Company
 		this.auth.GetALLCompany().subscribe(_companyList => {
 
-			this.CompanyList = _companyList;
-			each(this.CompanyList, (_Company: any) => {
-				this.allCompany.push(_Company);
-				this.unassignedCompany.push(_Company);
-			});
+			this.allCompany = _companyList;
+			this.filteredCompany = this.allCompany;
 			if (this.issuperadmin == "True") {
-				this.allCompany = this.allCompany;
-				this.unassignedCompany = this.unassignedCompany;
+				this.filteredCompany = this.allCompany;
 			}
 			else if (this.isadmin == "True") {
-				this.allCompany = this.allCompany.filter(row => row.id == this.companyid)
-				this.unassignedCompany = this.unassignedCompany.filter(row => row.id == this.companyid);
+				this.filteredCompany = this.allCompany.filter(row => row.id == this.companyid);
 			}
 			else {
-				this.allCompany = this.allCompany.filter(row => row.id == this.companyid)
-				this.unassignedCompany = this.unassignedCompany.filter(row => row.id == this.companyid);
+				this.filteredCompany = this.allCompany.filter(row => row.id == this.companyid);
 			}
 
-
-			each([Number(this.CompanySubject.value.toString())], (_CompanyId: number) => {
-				const _Company = find(this.allCompany, (_Company: any) => {
-					return _Company.id === _CompanyId;
-				});
-				if (_Company) {
-					this.assignedCompany.push(_Company);
-					this.selectedCompany = _Company.companyname;
-					//remove(this.unassignedCompany, _Company);
-				}
-			});
+			this.getAllLocation(this.filteredCompany[0].id);
+			this.getCountryByCompanyID(this.filteredCompany[0].id);
 		});
-
-
-
-
 		//Location
-		this.auth.GetALLLocation().subscribe(_locationList => {
-			this.LocationList = _locationList;
-			each(this.LocationList, (_Location: any) => {
-				if (_Location.companyid == this.user.usercompanyid) {
-					this.allLocation.push(_Location);
-					this.unassignedLocation.push(_Location);
-				}
-
-				each([Number(this.LocationSubject.value.toString())], (_LocationId: number) => {
-					const _Location = find(this.allLocation, (_Location: User) => {
-						return _Location.id === _LocationId;
-					});
-					if (_Location) {
-						this.assignedLocation.push(_Location);
-						this.selectedLocation = _Location.locationname;
-						//remove(this.unassignedLocation, _Location);
-					}
-				});
-			});
-			if (this.isadmin == "False" && this.issuperadmin == "False") {
-				this.allLocation = this.allLocation.filter(row => row.id == this.locationid && row.companyid == this.companyid)
-				this.unassignedLocation = this.unassignedLocation.filter(row => row.id == this.locationid && row.companyid == this.companyid);
-			}
-		});
-
-		this.auth.GetALLCountry().subscribe((users: MCountryModel[]) => {
-
-			each(users, (_country: MCountryModel) => {
-				this.allcountrys.push(_country);
-				this.unassignedcountrys.push(_country);
-			});
-			if (this.issuperadmin == "False") {
-				this.allcountrys = this.allcountrys.filter(row => row.id == this.companyid)
-				this.unassignedcountrys = this.unassignedcountrys.filter(row => row.companyid == this.companyid);
-			}
-			each([Number(this.countrysSubject.value.toString())], (countryId: number) => {
-				const country = find(this.allcountrys, (_country: MCountryModel) => {
-					return _country.id === countryId;
-				});
-				if (country) {
-					this.assignedcountrys.push(country);
-					remove(this.unassignedcountrys, country);
-				}
-			});
-		});
-
-		this.auth.GetALLState().subscribe((users: MStateModel[]) => {
-			each(users, (_state: MStateModel) => {
-				this.allstates.push(_state);
-				this.unassignedstates.push(_state);
-			});
-			if (this.issuperadmin == "False") {
-				this.allstates = this.allstates.filter(row => row.id == this.companyid)
-				this.unassignedstates = this.unassignedstates.filter(row => row.id == this.companyid);
-			}
-			each([Number(this.statesSubject.value.toString())], (stateId: number) => {
-				const state = find(this.allstates, (_state: MStateModel) => {
-					return _state.id === stateId;
-				});
-				if (state) {
-					this.assignedstates.push(state);
-					remove(this.unassignedstates, state);
-				}
-			});
-		});
-
-		this.auth.GetALLCity().subscribe((users: MCityModel[]) => {
-			debugger;
-			each(users, (_city: MCityModel) => {
-				this.allcitys.push(_city);
-				this.unassignedcitys.push(_city);
-			});
-			if (this.issuperadmin == "False") {
-				this.allcitys = this.allcitys.filter(row => row.id == this.companyid)
-				this.unassignedcitys = this.unassignedcitys.filter(row => row.id == this.companyid);
-			}
-			each([Number(this.citysSubject.value.toString())], (cityId: number) => {
-				const city = find(this.allcitys, (_city: MCityModel) => {
-					return _city.id === cityId;
-				});
-				if (city) {
-					this.assignedcitys.push(city);
-					remove(this.unassignedcitys, city);
-				}
-			});
-		});
-0
 
 
-
-
-		//Roles
-		//this.allUserRoles$ = this.store.pipe(select(selectAllRoles));
-
-		this.auth.getAllRoles().subscribe((res: Role[]) => {
-			each(res, (_role: Role) => {
-				// if (_role.companyid == this.companyid) {
-				this.allRoles.push(_role);
-				this.unassignedRoles.push(_role);
-				// }
-			});
-		});
-
-		this.auth.getAllRoles().subscribe((res: Role[]) => {
-			let selectedRole: any;
-			selectedRole = res.filter(row => row.id == Number(this.rolesSubject.value.toString()));
-			if (selectedRole.length > 0) {
-				this.assignedRoles.push(selectedRole[0]);
-				remove(this.unassignedRoles, selectedRole[0]);
-			}
+		this.auth.GetALLState().subscribe((_state: MStateModel[]) => {
+			this.allstates = _state;
+			this.filteredstates = this.allstates;
 
 		});
-		if (this.companyid != undefined && this.companyid != 0 && this.locationid != undefined && this.locationid != 0)
-			this.unassignedRoles = this.allRoles.filter(row => row.locationid == Number(this.locationid) && row.companyid == Number(this.companyid));
-	}
 
-	selectToday() {
-		//this.model = this.calendar.getToday();
-	}
+		this.auth.GetALLCity().subscribe((_city: MCityModel[]) => {
+			this.allcitys = _city;
+			this.filteredcitys = _city;
 
-	getAgentRoles() {
-		//CCRoles Ativity
-		this.auth.getAllRoles().subscribe((_roles: any[]) => {
-			this.RolesList = _roles
 		});
-	}
 
-	getAllCompany() {
-		this.auth.GetALLCompany().subscribe(_companyList => {
-			console.log('Getall Company Data Response Came::::' + JSON.stringify(_companyList));
-			console.log('this.isadmin:::' + this.isadmin);
-			if (this.issuperadmin == "True") {
-				this.CompanyList.push(_companyList);
-				if (this.CompanyList.length > 0)
-					this.getAllLocation(this.CompanyList[0].id);
-			}
-			else if (this.isadmin == "True") {
-				this.CompanyList.push(_companyList.find(row => row.id == this.companyid));
-				if (this.CompanyList.length > 0)
-					this.getAllLocation(this.CompanyList[0].id);
-			}
-			else {
-				this.CompanyList.push(_companyList.find(row => row.id == this.companyid));
-				if (this.CompanyList.length > 0)
-					this.getAllLocation(this.CompanyList[0].id);
-			}
-		});
 
 	}
 
 
-	getAllLocation(companyid) {
-		//DropDown Ativity		
-		this.auth.GetALLLocation().subscribe(_locationList => {
-			this.LocationList = _locationList.filter(row => row.id != "0");
-			each(this.LocationList, (_Company: any) => {
-				if (_Company.companyid == companyid)
-					this.unassignedLocation.push(_Company);
-			});
-			if (this.isadmin == "False" && this.issuperadmin == "False") {
-				this.unassignedLocation = this.unassignedLocation.filter(row => row.id == this.locationid && row.companyid == this.companyid);
-			}
-		});
-	}
+
 
 
 
@@ -502,24 +295,8 @@ debugger;
 	initUser() {
 		this.createForm();
 		if (!this.user.id) {
-			//this.subheaderService.setTitle('Create user');
-			// this.subheaderService.setBreadcrumbs([
-			// 	{ title: 'User Management', page: `user-management` },
-			// 	{ title: 'Users', page: `user-management/users` },
-			// 	{ title: 'Create user', page: `user-management/users/add` }
-			// ]);
 			return;
 		}
-		//this.subheaderService.setTitle('Edit user');
-		// this.subheaderService.setBreadcrumbs([
-		// 	{ title: 'User Management', page: `user-management` },
-		// 	{ title: 'Users', page: `user-management/users` },
-		// 	{ title: 'Edit user', page: `user-management/users/edit`, queryParams: { id: this.user.id } }
-		// ]);
-
-		this.getAgentRoles();
-		//this.getAllCompany();
-
 	}
 
 
@@ -649,34 +426,19 @@ debugger;
 		_user.userroleid = this.rolesSubject.value;
 		_user.usercompanyid = this.CompanySubject.value;
 		_user.userlocationid = this.LocationSubject.value;
-		if (this.roleIdForAdding != undefined)
-			_user.roleid = this.roleIdForAdding;
-		else
-			_user.roleid = Number(this.rolesSubject.value);
-		if (this.CompanyIdForAdding != undefined)
-			_user.companyid = Number(this.CompanyIdForAdding);
-		else
-			_user.companyid = Number(this.CompanySubject.value);
 
-		if (this.LocationIdForAdding != undefined)
-			_user.locationid = Number(this.LocationIdForAdding);
-		else
-			_user.locationid = Number(this.LocationSubject.value);
+		_user.roleid = this.roleIdForAdding;
 
-		if (this.stateIdForAdding != undefined)
-			_user.stateid = Number(this.stateIdForAdding);
-		else
-			_user.stateid = Number(this.statesSubject.value);
+		_user.companyid = Number(this.CompanyIdForAdding);
 
-		if (this.cityIdForAdding != undefined)
-			_user.cityid = Number(this.cityIdForAdding);
-		else
-			_user.cityid = Number(this.citysSubject.value);
+		_user.locationid = Number(this.LocationIdForAdding);
 
-		if (this.countryIdForAdding != undefined)
-			_user.countryid = Number(this.countryIdForAdding);
-		else
-			_user.countryid = Number(this.countrysSubject.value);
+		_user.stateid = Number(this.stateIdForAdding);
+
+		_user.cityid = Number(this.cityIdForAdding);
+
+		_user.countryid = Number(this.countryIdForAdding);
+
 
 		_user.refreshToken = this.user.refreshToken;
 		_user.id = this.user.id;
@@ -689,10 +451,6 @@ debugger;
 		_user.confirmpassword = controls['confirmpassword'].value;
 		_user.password = controls['password'].value;
 		_user.profile_img = './assets/media/users/300_21.jpg';
-		//_user.contactno = controls['contactno'].value;
-		//_user.password = this.user.password;
-
-
 		return _user;
 	}
 
@@ -779,8 +537,7 @@ debugger;
 			return _role.id === (+this.roleIdForAdding);
 		});
 		if (role) {
-			this.assignedRoles.push(role);
-			remove(this.unassignedRoles, role);
+
 			this.roleIdForAdding = 0;
 			this.updateRoles();
 		}
@@ -791,12 +548,7 @@ debugger;
 	 *
 	 * @param role: Role
 	 */
-	unassingRole(role: Role) {
-		this.roleIdForAdding = 0;
-		this.unassignedRoles.push(role);
-		remove(this.assignedRoles, role);
-		this.updateRoles();
-	}
+
 
 	/**
 	 * Update roles
@@ -809,44 +561,90 @@ debugger;
 
 	getStateByCountry() {
 		if (this.allstates.length > 0) {
-			this.unassignedstates = this.allstates.filter(row => row.countryid == Number(this.countryIdForAdding));
+			this.filteredstates = this.allstates.filter(row => row.countryid == Number(this.countryIdForAdding));
 		}
-		this.stateIdForAdding = this.unassignedstates[0].id;
+		this.stateIdForAdding = this.filteredstates[0].id;
+		this.getCityByStateID(this.filteredstates[0].id);
 	}
+	
+	getStateByCountryID(countryID: number) {
+		if (this.allstates.length > 0) {
+			this.filteredstates = this.allstates.filter(row => row.countryid == Number(countryID));
+		}
+		this.stateIdForAdding = this.filteredstates[0].id;
+		this.getCityByStateID(this.filteredstates[0].id);
+	}
+
 	getCityByState() {
 		if (this.allcitys.length > 0) {
-			this.unassignedcitys = this.allcitys.filter(row => row.stateid == Number(this.stateIdForAdding));
+			this.filteredcitys = this.allcitys.filter(row => row.stateid == Number(this.stateIdForAdding));
 		}
-		this.cityIdForAdding = this.unassignedcitys[0].id;
+		this.cityIdForAdding = this.filteredcitys[0].id;
+	}
+	getCityByStateID(stateid:number) {
+		if (this.allcitys.length > 0) {
+			this.filteredcitys = this.allcitys.filter(row => row.stateid == Number(stateid));
+		}
+		this.cityIdForAdding = this.filteredcitys[0].id;
+	}
+
+	getCountryByCompanyID(companyid: number) {
+		this.auth.GetALLCountry().subscribe((_country: MCountryModel[]) => {
+			this.allcountrys = _country;
+			this.filteredcountrys = this.allcountrys.filter(row => row.companyid == Number(this.companyid));
+			this.getStateByCountryID(this.filteredcountrys[0].id);
+		});
 	}
 	getCountryByCompany() {
 		if (this.allcountrys.length > 0) {
-			this.unassignedcountrys = this.allcountrys.filter(row => row.companyid == Number(this.CompanyIdForAdding));
+			this.filteredcountrys = this.allcountrys.filter(row => row.companyid == Number(this.CompanyIdForAdding));
 		}
-		this.countryIdForAdding = this.unassignedcountrys[0].id;
+		this.countryIdForAdding = this.filteredcountrys[0].id;
+	}
+
+	getAgentRoles(companyid: number, locationid: number) {
+		//Roles
+		this.auth.getAllRoles().subscribe((_role: Role[]) => {
+			this.allRoles = _role;
+			this.filteredRoles = this.allRoles;
+			if (companyid > 0 && locationid > 0)
+				this.filteredRoles = this.allRoles.filter(row => row.locationid == Number(locationid) && row.companyid == Number(companyid));
+
+		});
+	}
+
+
+	getAllLocation(companyid: number) {
+		//DropDown Ativity		
+		this.auth.GetALLLocation().subscribe(_locationList => {
+			this.filteredLocation = _locationList.filter(row => row.companyid == companyid);
+
+			if (this.isadmin == "False" && this.issuperadmin == "False") {
+				this.filteredLocation = this.filteredLocation.filter(row => row.id == this.locationid && row.companyid == this.companyid);
+			}
+			this.getAgentRoles(companyid, this.filteredLocation[0].id);
+		});
+
 	}
 
 
 	getAllLocations(event) {
 		this.CompanyIdForAdding = Number(event.value);
-		//let comid = Number(event.value);
-		this.unassignedLocation = [];
-		//DropDown Ativity		
+		this.filteredLocation = [];
 		this.auth.GetALLLocation().subscribe(_locationList => {
-			debugger;
 			this.LocationList = _locationList;
 			each(this.LocationList, (_Company: any) => {
 				if (_Company.companyid == Number(event.value))
-					this.unassignedLocation.push(_Company);
+					this.filteredLocation.push(_Company);
 			});
 			if (this.isadmin == "False" && this.issuperadmin == "False") {
-				this.unassignedLocation = this.unassignedLocation.filter(row => row.id == this.locationid && row.companyid == this.companyid);
+				this.filteredLocation = this.filteredLocation.filter(row => row.id == this.locationid && row.companyid == this.companyid);
 			}
 		});
-		this.getCountryByCompany();
+
 	}
 	getAllRoles(event) {
-		this.unassignedRoles = [];
-		this.unassignedRoles = this.allRoles.filter(row => row.locationid == Number(event.value) && row.companyid == Number(this.CompanyIdForAdding));
+		this.filteredRoles = [];
+		this.filteredRoles = this.allRoles.filter(row => row.locationid == Number(event.value) && row.companyid == Number(this.CompanyIdForAdding));
 	}
 }

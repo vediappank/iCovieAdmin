@@ -200,6 +200,5 @@ D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\bin\Microsoft.Owin.Security.Google.xml
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\bin\Microsoft.Owin.Security.Twitter.xml
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\bin\System.Web.Http.Owin.xml
-D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\obj\Debug\iCovieApi.csprojResolveAssemblyReference.cache
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\obj\Debug\iCovieApi.dll
 D:\GitHub\iCovieAdmin\iCovieApi\iCovieApi\obj\Debug\iCovieApi.pdb

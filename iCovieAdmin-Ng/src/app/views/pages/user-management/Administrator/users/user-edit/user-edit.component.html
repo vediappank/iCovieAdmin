@@ -90,9 +90,7 @@
 							</div>
 						</form>
 					</div>
-					<!--end::Form-->
-			
-					
+					<!--end::Form-->	
 				
 					
 						<div class="form-group kt-form__group row">
@@ -100,7 +98,7 @@
 								<mat-form-field class="mat-form-field-fluid">
 									<mat-select placeholder="Select  Company" (selectionChange)="getAllLocations($event)"
 										[(ngModel)]="CompanyIdForAdding">
-										<mat-option *ngFor="let com of unassignedCompany" value="{{ com.id }}">
+										<mat-option *ngFor="let com of filteredCompany" [value]="com.id">
 											{{com.companyname}}</mat-option>
 									</mat-select>
 
@@ -111,7 +109,7 @@
 								<mat-form-field class="mat-form-field-fluid">
 									<mat-select placeholder="Select Location" (selectionChange)="getAllRoles($event)"
 										[(ngModel)]="LocationIdForAdding">
-										<mat-option *ngFor="let loc of unassignedLocation" value="{{ loc.id }}">
+										<mat-option *ngFor="let loc of filteredLocation" [value]="loc.id">
 											{{loc.locationname}}</mat-option>
 									</mat-select>
 
@@ -121,167 +119,50 @@
 						</div>
 						
 
-						<div class="form-group kt-form__group row" >
-
-							<div class="col-lg-6 kt-margin-bottom-20-mobile">
-								<h6 class="kt-section__heading">
-									Assigned Company:
-								</h6>
-								<div class="kt-list-timeline kt-list-timeline--user-role">
-									<div class="kt-list-timeline__items">
-										<div class="kt-list-timeline__item m-0 p-0">
-											<span
-												class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
-											<span class="kt-list-timeline__text">{{ selectedCompany }}</span>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 kt-margin-bottom-20-mobile">
-								<h6 class="kt-section__heading">
-									Assigned Location:
-								</h6>
-								<div class="kt-list-timeline kt-list-timeline--user-role">
-									<div class="kt-list-timeline__items">
-										<div class="kt-list-timeline__item m-0 p-0">
-											<span
-												class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
-											<span class="kt-list-timeline__text">{{ selectedLocation }}</span>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							
-						</div>
+						
 						<div class="form-group kt-form__group row">
 							<div class="col-lg-6 kt-margin-bottom-20-mobile">
 								<mat-form-field class="mat-form-field-fluid">
 									<mat-select placeholder="Select Role" [(ngModel)]="roleIdForAdding">
-										<mat-option *ngFor="let role of unassignedRoles" value="{{ role.id }}">
+										<mat-option *ngFor="let role of filteredRoles" [value]="role.id">
 											{{role.RoleName}}</mat-option>
 									</mat-select>
 
 								</mat-form-field>
 							</div>
-							<div class="col-lg-4 kt-margin-bottom-20-mobile">
-								<h6 class="kt-section__heading">
-									Assigned Role:
-								</h6>
-								<div class="form-group kt-form__group row" style="padding-left: 10px;">
-									<div class="kt-margin-bottom-20-mobile">
-										<div class="kt-list-timeline kt-list-timeline--user-role">
-											<div class="kt-list-timeline__items">
-												<div class="kt-list-timeline__item m-0 p-0"
-													*ngFor="let _role of assignedRoles">
-													<span
-														class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
-													<span class="kt-list-timeline__text">{{ _role.RoleName }}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 							
-							
-						</div>
-						<div class="form-group kt-form__group row">
 							<div class="col-lg-6 kt-margin-bottom-20-mobile">
 								<mat-form-field class="mat-form-field-fluid">
 									<mat-select placeholder="Select Country" [(ngModel)]="countryIdForAdding" (selectionChange)="getStateByCountry()">
-										<mat-option *ngFor="let Country of unassignedcountrys" value="{{ Country.id }}">
+										<mat-option *ngFor="let Country of filteredcountrys" [value]="Country.id">
 											{{Country.countryname}}</mat-option>
 									</mat-select>
 						
 								</mat-form-field>
 							</div>
+							
+						</div>
+						<div class="form-group kt-form__group row">
+							
 							<div class="col-lg-6 kt-margin-bottom-20-mobile">
 								<mat-form-field class="mat-form-field-fluid">
 									<mat-select placeholder="Select State" [(ngModel)]="stateIdForAdding"  (selectionChange)="getCityByState()">
-										<mat-option *ngFor="let State of unassignedstates" value="{{ State.id }}">
+										<mat-option *ngFor="let State of filteredstates" [value]="State.id">
 											{{State.statename}}</mat-option>
 									</mat-select>
 						
 								</mat-form-field>
 							</div>
-							
-						</div>
-						<div class="form-group kt-form__group row">
-							<div class="col-lg-6 kt-margin-bottom-20-mobile">
-								<div class="form-group kt-form__group row" style="padding-left: 10px;">
-									<div class="kt-margin-bottom-20-mobile">
-										<div class="kt-list-timeline kt-list-timeline--user-role">
-											<h6 class="kt-section__heading">
-												Assigned Country
-											</h6>
-											<div class="kt-list-timeline__items">
 						
-												<div class="kt-list-timeline__item m-0 p-0" *ngFor="let _Country of assignedcountrys">
-						
-													<span class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
-													<span class="kt-list-timeline__text">{{ _Country.countryname }}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 kt-margin-bottom-20-mobile">
-								<div class="form-group kt-form__group row" style="padding-left: 10px;">
-									<div class="kt-margin-bottom-20-mobile">
-										<div class="kt-list-timeline kt-list-timeline--user-role">
-											<h6 class="kt-section__heading">
-												Assigned State
-											</h6>
-											<div class="kt-list-timeline__items">
-						
-												<div class="kt-list-timeline__item m-0 p-0" *ngFor="let _State of assignedstates">
-						
-													<span class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
-													<span class="kt-list-timeline__text">{{ _State.statename }}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-						<div class="form-group kt-form__group row">
 							<div class="col-lg-6 kt-margin-bottom-20-mobile">
 								<mat-form-field class="mat-form-field-fluid">
 									<mat-select placeholder="Select City" [(ngModel)]="cityIdForAdding">
-										<mat-option *ngFor="let City of unassignedcitys" value="{{ City.id }}">
+										<mat-option *ngFor="let City of filteredcitys" [value]="City.id">
 											{{City.cityname}}</mat-option>
 									</mat-select>
 
 								</mat-form-field>
 							</div>
-							<div class="col-lg-4 kt-margin-bottom-20-mobile">
-								<h6 class="kt-section__heading">
-									Assigned City:
-								</h6>
-								<div class="form-group kt-form__group row" style="padding-left: 10px;">
-									<div class="kt-margin-bottom-20-mobile">
-										<div class="kt-list-timeline kt-list-timeline--user-City">
-											<div class="kt-list-timeline__items">
-												<div class="kt-list-timeline__item m-0 p-0"
-													*ngFor="let _City of assignedcitys">
-													<span
-														class="kt-list-timeline__badge kt-list-timeline__badge--primary"></span>
-													<span class="kt-list-timeline__text">{{ _City.cityname }}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							
 						</div>
-					
-			
 	</kt-portlet-body>
 </kt-portlet>
